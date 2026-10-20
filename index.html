@@ -115,10 +115,34 @@
   .tickets{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:40px;}
   .ticket{position:relative; background:var(--bone); border-radius:4px; padding:22px 24px 20px; box-shadow:0 14px 34px -20px rgba(0,0,0,.4); transition:transform .28s ease;}
   .ticket:hover{transform:translateY(-5px);}
-  .ticket::before,.ticket::after{content:""; position:absolute; top:50%; transform:translateY(-50%); width:16px; height:16px; border-radius:50%; background:var(--sand);}
-  .ticket::before{left:-8px;} .ticket::after{right:-8px;}
   .ticket .room{font-family:'Fraunces',serif; font-weight:600; font-size:1.3rem; color:var(--pine-dark);}
-  .ticket .perf{border-top:1.5px dashed var(--line); margin:14px 0;}
+  .ticket .specs{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--brass-dark); margin-top:6px;}
+  .ticket .perf{position:relative; border-top:1.5px dashed var(--line); margin:14px 0;}
+  .ticket .perf::before,.ticket .perf::after{content:""; position:absolute; top:-9px; width:16px; height:16px; border-radius:50%; background:var(--sand);}
+  .ticket .perf::before{left:-32px;} .ticket .perf::after{right:-32px;}
+  .ticket-photo{margin:-22px -24px 18px; aspect-ratio:3/2; overflow:hidden; border-radius:4px 4px 0 0; background:var(--sand);}
+  .ticket-photo img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease;}
+  .ticket:hover .ticket-photo img{transform:scale(1.04);}
+
+  /* the carolina */
+  .hotel{position:relative; margin-top:40px; border-radius:10px; overflow:hidden; aspect-ratio:16/8; min-height:320px; box-shadow:0 24px 50px -28px rgba(0,0,0,.55); background:var(--pine-dark);}
+  .hotel img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease;}
+  .hotel img.on{opacity:1; animation:kb 9s ease-out both;}
+  @keyframes kb{from{transform:scale(1.07);}to{transform:scale(1);}}
+  .hotel-cap{position:absolute; left:0; right:0; bottom:0; padding:60px 28px 22px; background:linear-gradient(transparent, rgba(14,18,30,.78)); color:var(--bone);}
+  .hotel-cap .lbl{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-light);}
+  .hotel-cap h3{font-family:'Fraunces',serif; font-weight:500; font-size:clamp(1.6rem,4vw,2.4rem); margin-top:4px;}
+  .hotel-cap h3 em{font-style:italic; font-weight:300; color:var(--brass-light);}
+  .hotel-dots{position:absolute; top:16px; right:18px; display:flex; gap:6px;}
+  .hotel-dots i{width:7px; height:7px; border-radius:50%; background:rgba(251,248,241,.45); transition:background .3s;}
+  .hotel-dots i.on{background:var(--brass-light);}
+  .hotel-copy{display:grid; grid-template-columns:1.3fr 1fr; gap:34px; margin-top:28px; align-items:start;}
+  .hotel-copy p{font-size:15px; line-height:1.7; opacity:.88;}
+  .amen{list-style:none; display:grid; gap:9px;}
+  .amen li{font-size:13.5px; display:flex; gap:10px; align-items:baseline;}
+  .amen li::before{content:"\25C6"; color:var(--brass-dark); font-size:9px;}
+  @media(max-width:700px){ .hotel-copy{grid-template-columns:1fr; gap:20px;} .hotel{aspect-ratio:4/3;} }
+  .credit{margin-top:14px; font-size:11px; opacity:.5;}
   .ticket .rate{display:flex; justify-content:space-between; align-items:baseline; font-size:13px; padding:4px 0;}
   .ticket .rate b{font-family:'JetBrains Mono',monospace; font-size:1.05rem;}
   .note{margin-top:22px; font-size:13.5px; line-height:1.6; opacity:.8;}
@@ -175,7 +199,7 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
     .hero-art .far, .hero-art .cloud, .hero-art .glow, .wx-ic, .cd-dot, .scroll-cue .bar,
-    .hero .eyebrow, .hero h1, .hero .sub, .hero .pill{animation:none;}
+    .hero .eyebrow, .hero h1, .hero .sub, .hero .pill, .hotel img.on{animation:none;}
     html{scroll-behavior:auto;}
   }
 </style>
@@ -311,20 +335,43 @@
       </div>
       <p class="day-blurb">Four nights at the Carolina. Prices are per adult for the whole package, golf and meals included.</p>
     </div>
+    <div class="hotel" id="hotel">
+      <img class="on" src="img/carolina-exterior.jpg" alt="The Carolina Hotel and its front lawn">
+      <img src="img/carolina-main.jpg" alt="The Carolina's entrance with the PINEHURST hedge" loading="lazy">
+      <img src="img/carolina-lobby.jpg" alt="The Carolina's renovated lobby" loading="lazy">
+      <img src="img/carolina-pool.jpg" alt="The heated pool complex behind the Carolina" loading="lazy">
+      <img src="img/carolina-exterior-2.jpg" alt="The Carolina from across the lawn" loading="lazy">
+      <div class="hotel-dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      <div class="hotel-cap"><div class="lbl">Home base &middot; Four nights</div><h3>The Carolina <em>Hotel</em></h3></div>
+    </div>
+    <div class="hotel-copy">
+      <p>They call it the &ldquo;Queen of the South.&rdquo; The Carolina has 230 Four-Diamond rooms and suites, and the rooms and grand lobby were recently renovated. Breakfast is at the Carolina Dining Room, which Pinehurst bills as the best breakfast in golf, and the Coffee House off the lobby covers the quick stuff.</p>
+      <ul class="amen">
+        <li>Big verandas on the front</li>
+        <li>Heated pool complex</li>
+        <li>Putting green on the West Lawn</li>
+        <li>Carolina Dining Room &amp; Coffee House</li>
+        <li>Two shops on site</li>
+      </ul>
+    </div>
     <div class="tickets">
       <div class="ticket">
+        <div class="ticket-photo"><img src="img/room-deluxe.jpg" alt="Carolina Deluxe double queen room" loading="lazy"></div>
         <div class="room">Carolina Deluxe</div>
+        <div class="specs">1 king or 2 doubles &middot; 250&ndash;400 sq ft</div>
         <div class="perf"></div>
         <div class="rate"><span>Sharing a room</span><b>$3,000</b></div>
         <div class="rate"><span>Solo room</span><b>$4,200</b></div>
       </div>
       <div class="ticket">
+        <div class="ticket-photo"><img src="img/room-premium.jpg" alt="Carolina Premium double queen room" loading="lazy"></div>
         <div class="room">Carolina Premium</div>
         <div class="perf"></div>
         <div class="rate"><span>Sharing a room</span><b>$3,200</b></div>
         <div class="rate"><span>Solo room</span><b>$4,600</b></div>
       </div>
       <div class="ticket">
+        <div class="ticket-photo"><img src="img/room-suite.jpg" alt="Carolina double queen suite" loading="lazy"></div>
         <div class="room">Villas &amp; Suites</div>
         <div class="perf"></div>
         <div class="rate"><span>Sharing a room</span><b>$3,440</b></div>
@@ -332,6 +379,7 @@
       </div>
     </div>
     <p class="note">Room tier and roommates are still to be decided. Doubling up saves $1,200&ndash;$1,600 a head.</p>
+    <p class="credit">Photos: Pinehurst Resort</p>
   </div>
 </section>
 
@@ -443,6 +491,10 @@
     var nio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.toggle('active', l.getAttribute('href')==='#'+e.target.id);}); } });},{rootMargin:'-45% 0px -50% 0px'});
     links.forEach(function(l){var sec=document.querySelector(l.getAttribute('href')); if(sec) nio.observe(sec);});
   }
+
+  // rotate Carolina photos
+  var hs=[].slice.call(document.querySelectorAll('#hotel img')), hd=[].slice.call(document.querySelectorAll('#hotel .hotel-dots i')), hi=0;
+  if(!reduce && hs.length>1) setInterval(function(){ hs[hi].classList.remove('on'); hd[hi].classList.remove('on'); hi=(hi+1)%hs.length; hs[hi].classList.add('on'); hd[hi].classList.add('on'); },5000);
 
   // count-up for the bottom line
   function fmt(n){return '$'+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');}
