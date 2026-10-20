@@ -56,12 +56,13 @@
 
   /* hero */
   .hero{position:relative; height:100svh; min-height:580px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:var(--bone); overflow:hidden; background:var(--navy);}
-  .hero-art{position:absolute; inset:0; width:100%; height:100%;}
-  .hero-art .far{animation:drift 70s ease-in-out infinite alternate;}
-  .hero-art .cloud{animation:drift 90s ease-in-out infinite alternate-reverse;}
-  .hero-art .glow{animation:glow 6s ease-in-out infinite;}
-  @keyframes drift{to{transform:translateX(-40px);}}
-  @keyframes glow{50%{opacity:.55;}}
+  .hero-slides{position:absolute; inset:0;}
+  .hero-slides img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.8s ease;}
+  .hero-slides img.on{opacity:1; animation:heroKen 9s ease-out both;}
+  @keyframes heroKen{from{transform:scale(1.1);}to{transform:scale(1);}}
+  .hero-caption{position:absolute; right:22px; bottom:26px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--bone); opacity:.8; transition:opacity .5s ease;}
+  .hero-caption::before{content:""; display:inline-block; width:18px; height:1px; background:var(--brass-light); vertical-align:middle; margin-right:9px;}
+  @media(max-width:600px){ .hero-caption{right:auto; left:18px; bottom:22px;} .scroll-cue{display:none;} }
   .hero-shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,18,30,.35) 0%, rgba(14,18,30,.15) 40%, rgba(14,18,30,.75) 100%);}
   .hero-content{position:relative; z-index:2; padding:0 6vw;}
   .eyebrow{font-size:12px; letter-spacing:.24em; text-transform:uppercase; font-weight:600; color:var(--brass-light); margin-bottom:22px;}
@@ -107,6 +108,8 @@
   .tier.inc{background:#E3EADF; color:var(--pine-dark);}
   .tier.up{background:#F3E4C4; color:var(--brass-dark);}
   .tier.add{background:#E4E6EE; color:var(--navy);}
+  .pick{position:absolute; top:16px; right:16px; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--bone); background:var(--pine); padding:4px 9px; border-radius:100px;}
+  .also{margin-top:22px; font-size:13px; opacity:.6; letter-spacing:.02em;}
   .course.star{box-shadow:0 0 0 2px var(--brass), 0 18px 42px -26px rgba(0,0,0,.45);}
   .rules{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:28px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.85;}
   .rules span::before{content:"\25C6"; color:var(--brass-light); margin-right:8px;}
@@ -198,7 +201,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
-    .hero-art .far, .hero-art .cloud, .hero-art .glow, .wx-ic, .cd-dot, .scroll-cue .bar,
+    .hero-slides img.on, .wx-ic, .cd-dot, .scroll-cue .bar,
     .hero .eyebrow, .hero h1, .hero .sub, .hero .pill, .hotel img.on{animation:none;}
     html{scroll-behavior:auto;}
   }
@@ -234,31 +237,14 @@
 </nav>
 
 <section class="hero">
-  <svg class="hero-art" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1F2A44"/><stop offset=".45" stop-color="#5B5470"/>
-      <stop offset=".72" stop-color="#D48A55"/><stop offset=".86" stop-color="#F0C27B"/>
-    </linearGradient>
-    <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE7B0"/><stop offset=".35" stop-color="#F7C779" stop-opacity=".8"/><stop offset="1" stop-color="#F0A85F" stop-opacity="0"/></radialGradient>
-    <linearGradient id="fair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E6B47"/><stop offset="1" stop-color="#22362A"/></linearGradient>
-    <linearGradient id="sandg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9D3A6"/><stop offset="1" stop-color="#B99A69"/></linearGradient>
-  </defs>
-  <rect width="1600" height="1000" fill="url(#sky)"/>
-  <circle class="glow" cx="1060" cy="520" r="300" fill="url(#sun)"/>
-  <circle cx="1060" cy="520" r="62" fill="#FFE2A6" opacity=".95"/>
-  <g class="cloud" fill="#F6D9B0" opacity=".28"><ellipse cx="380" cy="300" rx="190" ry="16"/><ellipse cx="520" cy="322" rx="140" ry="10"/><ellipse cx="1280" cy="250" rx="210" ry="14"/><ellipse cx="1180" cy="276" rx="120" ry="9"/></g>
-  <g class="far" fill="#3B3F4E" opacity=".75"><path d="M-45 657V581H-35V657Z M-40 540L-18 577H-62Z M-40 558L-9 596H-71Z M-40 577L-1 615H-79Z M41 645V567H51V645Z M46 524L68 563H24Z M46 544L77 582H15Z M46 563L86 602H6Z M130 644V560H140V644Z M135 516L159 557H111Z M135 536L169 577H101Z M135 557L179 598H92Z M216 653V591H227V653Z M221 558L246 588H197Z M221 573L255 603H187Z M221 588L265 619H178Z M289 652V556H300V652Z M294 504L320 551H268Z M294 527L330 575H258Z M294 551L341 599H248Z M400 650V586H407V650Z M404 551L420 583H387Z M404 567L427 599H381Z M404 583L434 615H374Z M450 642V577H459V642Z M454 541L473 574H436Z M454 557L481 590H428Z M454 574L488 606H421Z M523 650V575H534V650Z M528 534L553 571H504Z M528 553L563 590H494Z M528 571L573 608H484Z M629 649V571H639V649Z M634 529L657 568H611Z M634 549L666 587H602Z M634 568L675 606H593Z M709 655V558H720V655Z M715 506L741 554H689Z M715 530L751 578H678Z M715 554L762 601H668Z M827 647V576H835V647Z M831 538L849 573H812Z M831 555L857 590H805Z M831 573L864 607H797Z M884 656V567H893V656Z M888 520L908 563H868Z M888 541L917 585H860Z M888 563L925 607H851Z M959 642V546H970V642Z M964 495L989 542H940Z M964 518L999 565H930Z M964 542L1009 589H920Z M1043 658V564H1052V658Z M1047 513L1068 559H1026Z M1047 536L1077 582H1018Z M1047 559L1085 606H1010Z M1122 654V593H1132V654Z M1127 560L1149 590H1104Z M1127 575L1158 605H1095Z M1127 590L1167 620H1086Z M1201 657V596H1210V657Z M1206 562L1225 593H1186Z M1206 577L1233 608H1178Z M1206 593L1241 623H1170Z M1292 644V581H1300V644Z M1296 547L1315 578H1277Z M1296 562L1322 593H1269Z M1296 578L1330 609H1262Z M1349 651V561H1357V651Z M1353 513L1371 557H1335Z M1353 535L1379 579H1328Z M1353 557L1386 601H1320Z M1419 644V578H1429V644Z M1424 543L1447 575H1400Z M1424 559L1457 591H1391Z M1424 575L1466 608H1381Z M1521 645V582H1530V645Z M1525 548L1546 579H1505Z M1525 564L1554 595H1497Z M1525 579L1562 610H1488Z M1592 647V551H1602V647Z M1597 499L1621 546H1573Z M1597 522L1631 570H1563Z M1597 546L1641 593H1554Z"/><rect x="-60" y="630" width="1720" height="80"/></g>
-  <g fill="#263228"><path d="M-46 709V607H-34V709Z M-40 552L-14 602H-66Z M-40 577L-3 627H-77Z M-40 602L7 652H-87Z M66 693V597H81V693Z M73 545L106 592H41Z M73 569L120 616H27Z M73 592L133 640H14Z M182 695V564H193V695Z M188 493L213 558H162Z M188 526L224 590H152Z M188 558L234 622H142Z M260 694V598H273V694Z M266 547L295 594H238Z M266 570L306 617H227Z M266 594L317 641H215Z M380 711V601H392V711Z M386 541L413 596H359Z M386 568L424 623H348Z M386 596L435 650H338Z M486 692V572H500V692Z M493 506L525 566H462Z M493 536L537 596H449Z M493 566L550 625H436Z M589 694V556H602V694Z M596 481L627 549H565Z M596 515L639 583H552Z M596 549L651 617H540Z M691 693V563H706V693Z M699 494L731 557H666Z M699 525L744 589H653Z M699 557L757 621H640Z M853 698V561H866V698Z M860 488L888 555H831Z M860 521L900 589H820Z M860 555L911 622H808Z M942 694V601H957V694Z M949 551L982 596H917Z M949 574L995 619H904Z M949 596L1008 642H891Z M1088 702V598H1101V702Z M1094 542L1125 593H1063Z M1094 567L1138 619H1051Z M1094 593L1150 645H1038Z M1198 690V590H1211V690Z M1205 536L1235 585H1175Z M1205 560L1247 610H1163Z M1205 585L1259 634H1151Z M1300 703V583H1313V703Z M1307 518L1338 577H1275Z M1307 548L1351 607H1263Z M1307 577L1363 636H1250Z M1412 688V550H1422V688Z M1417 475L1441 543H1393Z M1417 509L1451 577H1383Z M1417 543L1461 612H1373Z M1497 692V578H1507V692Z M1502 517L1525 573H1479Z M1502 545L1534 601H1470Z M1502 573L1543 629H1461Z M1581 697V576H1591V697Z M1586 511L1609 570H1563Z M1586 541L1619 600H1553Z M1586 570L1628 630H1544Z"/><rect x="-60" y="680" width="1720" height="60"/></g>
-  <path d="M0 735 C 300 715 600 745 900 730 S 1400 720 1600 738 V1000 H0Z" fill="url(#fair)"/>
-  <path d="M-20 1000 C 120 860 260 830 470 845 C 640 858 720 905 760 1000Z" fill="url(#sandg)"/>
-  <path d="M1100 1000 C 1180 900 1330 870 1460 880 C 1540 886 1600 900 1620 910 V1000Z" fill="url(#sandg)" opacity=".9"/>
-  <g fill="#3E5B45" opacity=".85"><path d="M150 905 l8 -26 l6 26z M190 890 l7 -22 l5 22z M330 880 l9 -28 l6 28z M560 905 l7 -24 l6 24z M1250 905 l8 -26 l6 26z M1400 895 l7 -22 l6 22z"/></g>
-  <ellipse cx="880" cy="770" rx="190" ry="26" fill="#5E7C55"/>
-  <line x1="910" y1="768" x2="910" y2="640" stroke="#F4EFE3" stroke-width="3"/>
-  <path class="flag" d="M911 642 L962 655 L911 668Z" fill="#B98B3A"/>
-  <ellipse cx="910" cy="768" rx="7" ry="2.5" fill="#1E1F1C"/>
-</svg>
+  <div class="hero-slides" id="heroSlides">
+    <img class="on" src="img/hero-no2.jpg" alt="Pinehurst No. 2 - Hole 9" data-cap="No. 2 &middot; Hole 9" style="object-position:center 60%">
+    <img src="img/hero-no10.jpg" alt="Pinehurst No. 10 - Hole 8" data-cap="No. 10 &middot; Hole 8" style="object-position:center" loading="lazy">
+    <img src="img/hero-no4.jpg" alt="Pinehurst No. 4" data-cap="No. 4" style="object-position:center" loading="lazy">
+    <img src="img/hero-no5.jpg" alt="Pinehurst No. 5" data-cap="No. 5" style="object-position:center 70%" loading="lazy">
+    <img src="img/hero-cradle.jpg" alt="Pinehurst The Cradle" data-cap="The Cradle" style="object-position:center" loading="lazy">
+    <img src="img/hero-cradle-2.jpg" alt="Pinehurst The Cradle" data-cap="The Cradle" style="object-position:center 65%" loading="lazy">
+  </div>
   <div class="hero-shade"></div>
   <div class="hero-content">
     <div class="eyebrow">Nov 11&ndash;15, 2027 &middot; Village of Pinehurst, NC</div>
@@ -266,6 +252,7 @@
     <p class="sub">Four nights, four rounds, and the Cradle of American Golf.</p>
     <span class="pill">Early planning &middot; details to come</span>
   </div>
+  <div class="hero-caption" id="heroCap">No. 2 &middot; Hole 9</div>
   <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
 </section>
 
@@ -298,29 +285,23 @@
   <div class="wrap reveal">
     <div class="day-head">
       <div>
-        <div class="day-eyebrow">Pick Four</div>
+        <div class="day-eyebrow">Our Lineup</div>
         <h2>The Courses</h2>
       </div>
-      <p class="day-blurb">Four rounds included. Nine courses are in the package; three more are a short upgrade at the pro shop.</p>
+      <p class="day-blurb">Four rounds on Nos. 2, 4, 5 and 10, plus a loop around The Cradle. Two of the four are upgrades.</p>
     </div>
     <div class="grid">
-      <div class="card course star"><div class="no">No. 2</div><div class="arch">Donald Ross &middot; Coore &amp; Crenshaw restoration</div><p>The big one. Host of multiple U.S. Opens, famous for its turtleback greens.</p><span class="tier up">+$250 upgrade</span></div>
-      <div class="card course"><div class="no">No. 10</div><div class="arch">Tom Doak &middot; 2024</div><p>Carved from an old sand mine. Sports Illustrated named it Best New Course of 2024.</p><span class="tier up">+$125 upgrade</span></div>
-      <div class="card course"><div class="no">No. 11</div><div class="arch">Coore &amp; Crenshaw</div><p>The newest course at the Sandmines property, next door to No. 10.</p><span class="tier up">+$125 upgrade</span></div>
-      <div class="card course"><div class="no">No. 4</div><div class="arch">Gil Hanse &middot; 2018 redesign</div><p>Wide sandy waste areas and big, bold greens.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 1</div><div class="arch">Donald Ross</div><p>Where golf at Pinehurst started. Classic and very walkable.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 3</div><div class="arch">Donald Ross</div><p>Short and quirky, with plenty of Ross green complexes.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 5</div><div class="arch">Ellis Maples</div><p>Rolling and tree-lined, and a real test of approach play.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 6</div><div class="arch">George &amp; Tom Fazio</div><p>A Fazio design with more elevation change than most of the property.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 7</div><div class="arch">Rees Jones</div><p>Wetlands and ravines make it one of the stiffer tests on site.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 8</div><div class="arch">Tom Fazio &middot; 1996</div><p>Built for the resort's centennial, with wetlands and big views.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">No. 9</div><div class="arch">Jack Nicklaus</div><p>The Nicklaus course, formerly National Golf Club.</p><span class="tier inc">Included</span></div>
-      <div class="card course"><div class="no">The Cradle</div><div class="arch">Gil Hanse &middot; 9 holes</div><p>Nine short holes by the clubhouse. Bring a wedge and a cold one.</p><span class="tier add">Add-on &middot; $65</span></div>
+      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 2</div><div class="arch">Donald Ross &middot; Coore &amp; Crenshaw restoration</div><p>The big one. Host of multiple U.S. Opens, famous for its turtleback greens.</p><span class="tier up">+$250 upgrade</span></div>
+      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 10</div><div class="arch">Tom Doak &middot; 2024</div><p>Carved from an old sand mine. Sports Illustrated named it Best New Course of 2024.</p><span class="tier up">+$125 upgrade</span></div>
+      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 4</div><div class="arch">Gil Hanse &middot; 2018 redesign</div><p>Wide sandy waste areas and big, bold greens.</p><span class="tier inc">Included</span></div>
+      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 5</div><div class="arch">Ellis Maples</div><p>Rolling and tree-lined, and a real test of approach play.</p><span class="tier inc">Included</span></div>
+      <div class="card course star"><span class="pick">Bonus</span><div class="no">The Cradle</div><div class="arch">Gil Hanse &middot; 9 holes</div><p>Nine short holes by the clubhouse. Bring a wedge and a cold one.</p><span class="tier add">Add-on &middot; $65</span></div>
     </div>
+    <div class="also">Also on the property: Nos. 1, 3, 6, 7, 8, 9 &amp; 11</div>
     <div class="rules">
-      <span>Nos. 2, 4, 10 &amp; 11 need a 3-night stay (we're staying 4)</span>
+      <span>Nos. 2, 4 &amp; 10 need a 3-night stay (we're staying 4)</span>
       <span>Upgrades are charged at the pro shop on the day</span>
-      <span>Extra rounds: Nos. 1, 3 &amp; 5 $80 &middot; Cradle $65</span>
+      <span>Book The Cradle when we put down the deposit</span>
     </div>
   </div>
 </section>
@@ -405,14 +386,14 @@
     </div>
     <div class="grid">
       <div class="card"><div class="lbl">Deposit</div><h4>$300 per person</h4><p>Due at booking for hotel rooms and villas ($600 for cottages). Refundable up to 30 days before arrival.</p></div>
-      <div class="card"><div class="lbl">Upgrades</div><h4>$125&ndash;$250</h4><p>Swap one round to No. 2 for $250, or No. 10 or No. 11 for $125. Paid at the pro shop that day.</p></div>
-      <div class="card"><div class="lbl">Extra golf</div><h4>$65&ndash;$80</h4><p>Nos. 1, 3 &amp; 5 are $80 a round; The Cradle is $65.</p></div>
+      <div class="card"><div class="lbl">Upgrades</div><h4>+$375</h4><p>No. 2 is $250 and No. 10 is $125 on top of the package. Paid at the pro shop on the day.</p></div>
+      <div class="card"><div class="lbl">The Cradle</div><h4>+$65</h4><p>Our bonus round on the short course. Reserve it with the deposit.</p></div>
       <div class="card"><div class="lbl">Not included</div><h4>On you</h4><p>Flights, NC taxes, caddies, the bar tab and anything at the pro shop.</p></div>
     </div>
     <div class="cost-total">
       <div class="cost-total-label">Bottom Line &middot; Per Person</div>
-      <div class="cost-total-fig"><span class="countup" data-to="3300">$3,300</span> &ndash; <span class="countup" data-to="3784">$3,784</span></div>
-      <div class="cost-total-sub">Sharing a room, with the 10% resort service fee, before taxes. Add $250 if you upgrade a round to No. 2.</div>
+      <div class="cost-total-fig"><span class="countup" data-to="3740">$3,740</span> &ndash; <span class="countup" data-to="4224">$4,224</span></div>
+      <div class="cost-total-sub">Sharing a room, with the 10% resort service fee, plus our No. 2 and No. 10 upgrades and The Cradle ($440). Before taxes.</div>
     </div>
   </div>
 </section>
@@ -428,7 +409,7 @@
       <p class="day-blurb">The booking windows that matter between now and the first tee.</p>
     </div>
     <div class="timeline">
-      <div class="stop"><div class="when">At booking</div><div class="what"><h4>Lock it in</h4><p>$300 deposit per person. One extra round on Nos. 1, 3, 5 or The Cradle can be reserved at the same time.</p></div></div>
+      <div class="stop"><div class="when">At booking</div><div class="what"><h4>Lock it in</h4><p>$300 deposit per person. Reserve The Cradle at the same time.</p></div></div>
       <div class="stop"><div class="when">Oct 12, 2027</div><div class="what"><h4>Last day to back out</h4><p>Deposits are refundable up to 30 days before arrival.</p></div></div>
       <div class="stop"><div class="when">Nov 4, 2027</div><div class="what"><h4>Extra rounds open</h4><p>Additional rounds on Nos. 2, 4, 6, 7, 8, 9, 10 &amp; 11 can be booked 7 days out, based on availability.</p></div></div>
       <div class="stop"><div class="when">Thu, Nov 11</div><div class="what"><h4>Arrive</h4><p>Check in to the Carolina. Four nights start here.</p></div></div>
@@ -491,6 +472,10 @@
     var nio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.toggle('active', l.getAttribute('href')==='#'+e.target.id);}); } });},{rootMargin:'-45% 0px -50% 0px'});
     links.forEach(function(l){var sec=document.querySelector(l.getAttribute('href')); if(sec) nio.observe(sec);});
   }
+
+  // hero photo loop
+  var hsl=[].slice.call(document.querySelectorAll('#heroSlides img')), hcap=document.getElementById('heroCap'), hk=0;
+  if(!reduce && hsl.length>1) setInterval(function(){ hsl[hk].classList.remove('on'); hk=(hk+1)%hsl.length; hsl[hk].classList.add('on'); hcap.style.opacity=0; setTimeout(function(){ hcap.innerHTML=hsl[hk].dataset.cap; hcap.style.opacity=.8; },500); },5500);
 
   // rotate Carolina photos
   var hs=[].slice.call(document.querySelectorAll('#hotel img')), hd=[].slice.call(document.querySelectorAll('#hotel .hotel-dots i')), hi=0;
