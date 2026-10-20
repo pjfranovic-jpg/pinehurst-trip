@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Pinehurst Boyz//Golf Trip//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:pinehurst-boyz-2027@pjfranovic.github.io
+DTSTAMP:20261020T120000Z
+DTSTART;VALUE=DATE:20271111
+DTEND;VALUE=DATE:20271116
+SUMMARY:Pinehurst Boyz — Golf Trip
+LOCATION:Pinehurst Resort, 80 Carolina Vista Dr, Pinehurst, NC 28374
+DESCRIPTION:Four nights, four rounds at Pinehurst. Details: https://pjfranovic-jpg.github.io/pinehurst-trip/
+URL:https://pjfranovic-jpg.github.io/pinehurst-trip/
+END:VEVENT
+END:VCALENDAR
