@@ -64,7 +64,7 @@
   @keyframes heroKen{from{transform:scale(1.1);}to{transform:scale(1);}}
   .hero-caption{position:absolute; right:22px; bottom:26px; z-index:2; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--bone); opacity:.8; transition:opacity .5s ease;}
   .hero-caption::before{content:""; display:inline-block; width:18px; height:1px; background:var(--brass-light); vertical-align:middle; margin-right:9px;}
-  @media(max-width:600px){ .hero-caption{right:auto; left:18px; bottom:22px;} .scroll-cue{display:none;} }
+  @media(max-width:600px){ .hero-caption{right:auto; left:18px; bottom:22px;} }
   .hero-shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,18,30,.35) 0%, rgba(14,18,30,.15) 40%, rgba(14,18,30,.75) 100%);}
   .hero-content{position:relative; z-index:2; padding:0 6vw;}
   .eyebrow{font-size:12px; letter-spacing:.24em; text-transform:uppercase; font-weight:600; color:var(--brass-light); margin-bottom:22px;}
@@ -76,9 +76,6 @@
   .hero .eyebrow, .hero h1, .hero .sub, .hero .pill{animation:heroIn .9s ease both;}
   .hero h1{animation-delay:.12s;} .hero .sub{animation-delay:.3s;} .hero .pill{animation-delay:.45s;}
   @keyframes heroIn{from{opacity:0; transform:translateY(24px);}to{opacity:1; transform:none;}}
-  .scroll-cue{position:absolute; bottom:30px; left:50%; transform:translateX(-50%); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.7; display:flex; flex-direction:column; align-items:center; gap:8px; z-index:2;}
-  .scroll-cue .bar{width:1px; height:34px; background:var(--bone); opacity:.6; animation:cue 2.2s ease-in-out infinite;}
-  @keyframes cue{0%,100%{opacity:.15}50%{opacity:.75}}
 
   /* sections */
   section.day{padding:min(13vh,110px) 6vw; position:relative;}
@@ -270,7 +267,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
-    .hero-slides img.on, .dossier, .tee-day, .dine, .dine-photo img, .hbh-btn, .lodge-link, .wx-ic, .cd-dot, .scroll-cue .bar,
+    .hero-slides img.on, .dossier, .tee-day, .dine, .dine-photo img, .hbh-btn, .lodge-link, .wx-ic, .cd-dot,
     .hero .eyebrow, .hero h1, .hero .sub, .hero .pill, .hotel img.on{animation:none;}
     html{scroll-behavior:auto;}
   }
@@ -324,7 +321,6 @@
     <span class="pill">Early planning &middot; details to come</span>
   </div>
   <div class="hero-caption" id="heroCap">No. 2 &middot; Hole 9</div>
-  <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
 </section>
 
 <!-- PACKAGE -->
