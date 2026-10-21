@@ -129,8 +129,75 @@
   .ticket-photo img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease;}
   .ticket:hover .ticket-photo img{transform:scale(1.04);}
 
+
+  /* course dossiers */
+  .dossier-intro{max-width:660px; font-size:15px; line-height:1.7; opacity:.88; margin:18px 0 44px;}
+  .dossier{background-color:var(--bone); background-size:cover; background-position:center; color:var(--ink); border-radius:8px; padding:30px 32px 28px; margin-bottom:22px; box-shadow:0 20px 46px -28px rgba(0,0,0,.6); transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s ease;}
+  .dossier:hover{transform:translateY(-4px);}
+  .dossier-head{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px 20px; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:20px;}
+  .dossier-title{display:flex; align-items:center; gap:16px;}
+  .dossier-logo{height:62px; width:auto; max-width:110px; object-fit:contain; flex:none;}
+  .dossier-head h3{font-family:'Fraunces',serif; font-weight:600; font-size:1.9rem; color:var(--pine-dark); line-height:1;}
+  .dossier-head .tagline{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:14px; opacity:.72; margin-top:6px;}
+  .dossier-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px 30px;}
+  @media(max-width:700px){ .dossier-grid{grid-template-columns:1fr;} .dossier{padding:24px 22px 22px;} .dossier-logo{height:48px;} }
+  .dossier-item .label{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--brass-dark); margin-bottom:7px;}
+  .dossier-item p{font-size:13.5px; line-height:1.7; opacity:.9;}
+  .dossier-foot{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-top:24px; padding-top:18px; border-top:1px solid var(--line);}
+  .dossier-stats{display:flex; gap:8px 18px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--pine); font-weight:700;}
+  .dossier-btns{display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .hbh-btn{display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--bone); background:var(--pine-dark); padding:11px 18px; border-radius:100px; text-decoration:none; transition:transform .2s ease, background .2s ease;}
+  .hbh-btn:hover{background:var(--brass-dark); transform:translateY(-2px);}
+  .hbh-btn svg{width:13px; height:13px; fill:currentColor;}
+  .text-link{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--brass-dark); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px;}
+  .text-link:hover{color:var(--pine-dark);}
+
+  /* tee sheet */
+  .teesheet{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin-top:40px;}
+  @media(max-width:860px){ .teesheet{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media(max-width:440px){ .teesheet{grid-template-columns:1fr;} }
+  .tee-day{background:var(--bone); border-radius:6px; padding:18px 18px 16px; box-shadow:0 14px 34px -22px rgba(0,0,0,.45); position:relative; transition:transform .28s ease;}
+  .tee-day:hover{transform:translateY(-4px);}
+  .tee-day .dow{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--brass-dark); font-weight:700;}
+  .tee-day .date{font-family:'Fraunces',serif; font-weight:600; font-size:1.6rem; color:var(--pine-dark); margin-top:2px;}
+  .tee-day .sub{font-size:12px; opacity:.65; margin-top:2px; min-height:1.2em;}
+  .tee-day .slot{border-top:1.5px dashed var(--line); margin-top:14px; padding-top:12px; display:grid; gap:6px;}
+  .tee-day .slot div{display:flex; justify-content:space-between; font-size:12px;}
+  .tee-day .slot span{opacity:.6;}
+  .tee-day .slot b{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--pine);}
+  .to-book{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-top:28px;}
+  .to-book .lbl{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--brass-dark); margin-right:4px;}
+  .chip{display:inline-flex; align-items:center; gap:8px; background:var(--bone); border:1px solid var(--line); border-radius:100px; padding:6px 13px 6px 7px; font-size:12.5px; font-weight:600;}
+  .chip img{height:22px; width:28px; object-fit:contain;}
+
+  /* dining */
+  .dine-group{margin-top:42px;}
+  .dine-group h3{font-family:'Fraunces',serif; font-weight:500; font-style:italic; font-size:1.5rem; color:var(--brass-light); margin-bottom:16px;}
+  .dine-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px;}
+  .dine{background:var(--bone); color:var(--ink); border-radius:8px; overflow:hidden; box-shadow:0 18px 42px -26px rgba(0,0,0,.6); display:flex; flex-direction:column; transition:transform .28s cubic-bezier(.2,.7,.3,1);}
+  .dine:hover{transform:translateY(-5px);}
+  .dine-photo{aspect-ratio:16/10; overflow:hidden; position:relative; background:var(--sand);}
+  .dine-photo img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease;}
+  .dine:hover .dine-photo img{transform:scale(1.05);}
+  .dine-flag{position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; background:var(--navy); color:var(--bone); padding:5px 10px; border-radius:100px;}
+  .dine-body{padding:16px 18px 18px; display:flex; flex-direction:column; flex:1;}
+  .dine .where{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass-dark); font-weight:700;}
+  .dine h4{font-family:'Fraunces',serif; font-weight:600; font-size:1.25rem; margin:5px 0 7px; color:var(--pine-dark);}
+  .dine p{font-size:13px; line-height:1.6; opacity:.85; flex:1;}
+  .dine .text-link{align-self:flex-start; margin-top:14px;}
+  .dine-alert{margin-top:26px; max-width:720px; font-size:13.5px; line-height:1.65; background:rgba(251,248,241,.08); border-left:3px solid var(--brass-light); padding:14px 18px; border-radius:0 6px 6px 0;}
+
+  /* lodging links */
+  .lodge-links{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+  .lodge-link{display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--bone); background:var(--pine-dark); padding:12px 20px; border-radius:100px; text-decoration:none; transition:transform .2s ease, background .2s ease;}
+  .lodge-link:hover{background:var(--brass-dark); transform:translateY(-2px);}
+  .lodge-link.alt{background:var(--bone); color:var(--pine-dark);}
+  .lodge-link.alt:hover{background:var(--cream);}
+  .ticket .text-link{display:inline-block; margin-top:14px;}
+  .btn img{height:17px; width:auto;}
+
   /* the carolina */
-  .hotel{position:relative; margin-top:40px; border-radius:10px; overflow:hidden; aspect-ratio:16/8; min-height:320px; box-shadow:0 24px 50px -28px rgba(0,0,0,.55); background:var(--pine-dark);}
+  .hotel{position:relative; width:100%; margin-top:40px; border-radius:10px; overflow:hidden; aspect-ratio:16/8; min-height:320px; box-shadow:0 24px 50px -28px rgba(0,0,0,.55); background:var(--pine-dark);}
   .hotel img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.6s ease;}
   .hotel img.on{opacity:1; animation:kb 9s ease-out both;}
   @keyframes kb{from{transform:scale(1.07);}to{transform:scale(1);}}
@@ -203,7 +270,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
-    .hero-slides img.on, .wx-ic, .cd-dot, .scroll-cue .bar,
+    .hero-slides img.on, .dossier, .tee-day, .dine, .dine-photo img, .hbh-btn, .lodge-link, .wx-ic, .cd-dot, .scroll-cue .bar,
     .hero .eyebrow, .hero h1, .hero .sub, .hero .pill, .hotel img.on{animation:none;}
     html{scroll-behavior:auto;}
   }
@@ -231,7 +298,9 @@
   <div class="links">
     <a href="#package">Package</a>
     <a href="#courses">Courses</a>
+    <a href="#tee-times">Tee Times</a>
     <a href="#stay">Stay</a>
+    <a href="#dining">Dining</a>
     <a href="#cost">Cost</a>
     <a href="#dates">Dates</a>
     <a href="#weather">Weather</a>
@@ -284,27 +353,222 @@
 
 <!-- COURSES -->
 <section class="day tone-pine" id="courses">
-  <div class="wrap reveal">
-    <div class="day-head">
+  <div class="wrap">
+    <div class="day-head reveal">
       <div>
         <div class="day-eyebrow">Our Lineup</div>
         <h2>The Courses</h2>
       </div>
       <p class="day-blurb">Four rounds on Nos. 2, 4, 5 and 10, plus a loop around The Cradle. Two of the four are upgrades.</p>
     </div>
-    <div class="grid">
-      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 2</div><div class="arch">Donald Ross &middot; Coore &amp; Crenshaw restoration</div><p>The big one. Host of multiple U.S. Opens, famous for its turtleback greens.</p><span class="tier up">+$250 upgrade</span></div>
-      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 10</div><div class="arch">Tom Doak &middot; 2024</div><p>Carved from an old sand mine. Sports Illustrated named it Best New Course of 2024.</p><span class="tier up">+$125 upgrade</span></div>
-      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 4</div><div class="arch">Gil Hanse &middot; 2018 redesign</div><p>Wide sandy waste areas and big, bold greens.</p><span class="tier inc">Included</span></div>
-      <div class="card course star"><span class="pick">Our pick</span><div class="no">No. 5</div><div class="arch">Ellis Maples</div><p>Rolling and tree-lined, and a real test of approach play.</p><span class="tier inc">Included</span></div>
-      <div class="card course star"><span class="pick">Bonus</span><div class="no">The Cradle</div><div class="arch">Gil Hanse &middot; 9 holes</div><p>Nine short holes by the clubhouse. Bring a wedge and a cold one.</p><span class="tier add">Add-on &middot; $65</span></div>
+    <p class="dossier-intro">Four rounds and a bonus loop: the U.S. Open course, Doak&rsquo;s sand-mine course, Hanse&rsquo;s sandy redesign and old-school No. 5, then The Cradle for fun. Here&rsquo;s what we&rsquo;re walking into.</p>
+
+    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no2.jpg');">
+      <div class="dossier-head">
+        <div class="dossier-title">
+          <img class="dossier-logo" src="img/logo-no2.png" alt="No. 2 logo" loading="lazy">
+          <div><h3>No. 2</h3><div class="tagline">&ldquo;Four U.S. Opens, turtleback greens and no rough.&rdquo;</div></div>
+        </div>
+        <span class="tier up">+$250 upgrade</span>
+      </div>
+      <div class="dossier-grid">
+        <div class="dossier-item">
+          <div class="label">History</div>
+          <p>Donald Ross opened it in 1907 and kept tinkering with it for decades. It has hosted four men&rsquo;s U.S. Opens: Payne Stewart in 1999, Michael Campbell in 2005, Martin Kaymer in 2014 and Bryson DeChambeau in 2024. Payne&rsquo;s statue stands next to the 18th green.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Style</div>
+          <p>Coore &amp; Crenshaw&rsquo;s restoration took out the rough and brought back the hardpan sand, wiregrass and native scrub along the fairways. The greens are crowned &ldquo;turtlebacks&rdquo; that throw anything a little off line down the slope.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Difficulty</div>
+          <p>7,588 yards and par 70 from the tips, with a 76.5 rating and 138 slope. Johnny Miller said hitting these greens is like landing a ball on top of a VW Beetle.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Inside Info</div>
+          <p>Aim for the middle of every green and live with a long putt. From just off the green, the putter is often the smart play, because a chip that doesn&rsquo;t clear the crown rolls back to your feet.</p>
+        </div>
+      </div>
+      <div class="dossier-foot">
+        <div class="dossier-stats"><span>PAR 70</span><span>7,588 YDS</span><span>SLOPE 138</span><span>DONALD ROSS, 1907</span></div>
+        <div class="dossier-btns">
+          <a class="hbh-btn" href="https://www.youtube.com/watch?v=o-e6617kfbU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Hole by Hole</a>
+          <a class="text-link" href="https://www.pinehurst.com/golf/courses/no-2/" target="_blank" rel="noopener">pinehurst.com &rarr;</a>
+        </div>
+      </div>
     </div>
-    <div class="also">Also on the property: Nos. 1, 3, 6, 7, 8, 9 &amp; 11</div>
+
+    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/hero-no10.jpg');">
+      <div class="dossier-head">
+        <div class="dossier-title">
+          <img class="dossier-logo" src="img/logo-no10.png" alt="No. 10 logo" loading="lazy">
+          <div><h3>No. 10</h3><div class="tagline">&ldquo;Tom Doak, a sand mine and a lot of room.&rdquo;</div></div>
+        </div>
+        <span class="tier up">+$125 upgrade</span>
+      </div>
+      <div class="dossier-grid">
+        <div class="dossier-item">
+          <div class="label">History</div>
+          <p>Pinehurst bought 900 acres of old sand-mining land about five miles south of the village, where The Pit Golf Links used to be. Tom Doak designed the course, his associate Angela Moser ran construction, and it opened in April 2024. Sports Illustrated named it Best New Course of 2024.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Style</div>
+          <p>Hilly ground with huge leftover mining mounds. The 8th plays between them, including one called the &ldquo;Matterhorn.&rdquo; Expect rugged built-up bunkers, native scrub, and sloped greens split by sideways tiers.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Difficulty</div>
+          <p>7,020 yards and par 70 from the tips, with a 74.1 rating and 142 slope, the highest slope of our four. Think of the 12th and 13th as one par 9.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Inside Info</div>
+          <p>Use the ground. Slopes around the first two greens feed low approaches onto the putting surface. On the 634-yard par-5 10th, cross bunkers about 100 yards short make laying up the usual play. Station 21 does a breakfast buffet right by the first tee.</p>
+        </div>
+      </div>
+      <div class="dossier-foot">
+        <div class="dossier-stats"><span>PAR 70</span><span>7,020 YDS</span><span>SLOPE 142</span><span>TOM DOAK, 2024</span></div>
+        <div class="dossier-btns">
+          <a class="hbh-btn" href="https://www.youtube.com/watch?v=XiRzM5aU70g" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Hole by Hole</a>
+          <a class="text-link" href="https://www.pinehurst.com/golf/courses/no-10/" target="_blank" rel="noopener">pinehurst.com &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no4.jpg');">
+      <div class="dossier-head">
+        <div class="dossier-title">
+          <img class="dossier-logo" src="img/logo-no4.png" alt="No. 4 logo" loading="lazy">
+          <div><h3>No. 4</h3><div class="tagline">&ldquo;Sandy wastes and dramatic views.&rdquo;</div></div>
+        </div>
+        <span class="tier inc">Included</span>
+      </div>
+      <div class="dossier-grid">
+        <div class="dossier-item">
+          <div class="label">History</div>
+          <p>Ross laid out the first version in 1919. Robert Trent Jones, Rees Jones and Tom Fazio all redid it over the years. Gil Hanse rebuilt it in 2018, ripping out the rough and Fazio&rsquo;s pot bunkers. It shared stroke play with No. 2 at the 2019 U.S. Amateur.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Style</div>
+          <p>Native sand and wiregrass instead of rough, wide corridors and long views across the property. Pinehurst sums it up as &ldquo;sandy wastes&rdquo; and &ldquo;dramatic vistas.&rdquo;</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Difficulty</div>
+          <p>7,227 yards and par 72 from the tips, with a 74.9 rating and 138 slope. The longest of our four, but the most forgiving off the tee.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Inside Info</div>
+          <p>A miss into the sand usually leaves a clean lie on hardpan, so don&rsquo;t panic. The 2nd is a short downhill par 5 at 473 yards and an early birdie chance. The 460-yard 5th is the one to survive.</p>
+        </div>
+      </div>
+      <div class="dossier-foot">
+        <div class="dossier-stats"><span>PAR 72</span><span>7,227 YDS</span><span>SLOPE 138</span><span>GIL HANSE, 2018</span></div>
+        <div class="dossier-btns">
+          <a class="hbh-btn" href="https://www.youtube.com/watch?v=w8R1bIrXBYU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Course Flyover</a>
+          <a class="text-link" href="https://www.pinehurst.com/golf/courses/no-4/" target="_blank" rel="noopener">pinehurst.com &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no5.jpg');">
+      <div class="dossier-head">
+        <div class="dossier-title">
+          <img class="dossier-logo" src="img/logo-putterboy.png" alt="No. 5 logo" loading="lazy">
+          <div><h3>No. 5</h3><div class="tagline">&ldquo;Tall pines and more water than anywhere else at Pinehurst.&rdquo;</div></div>
+        </div>
+        <span class="tier inc">Included</span>
+      </div>
+      <div class="dossier-grid">
+        <div class="dossier-item">
+          <div class="label">History</div>
+          <p>Ellis Maples, who learned course design under Donald Ross, built it in 1961. Robert Trent Jones reworked it in 1974.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Style</div>
+          <p>A classic parkland feel compared with the sandy courses, with towering pines and more water in play than any other Pinehurst course. The par-3 14th, framed by a pond and tall pines, is known as the Cathedral Hole.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Difficulty</div>
+          <p>6,823 yards and par 72, with a 135 slope. The shortest of our four, but the water makes up for it.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Inside Info</div>
+          <p>This is our round with no upgrade fee. Bring extra balls for the water and have the camera ready at the Cathedral Hole.</p>
+        </div>
+      </div>
+      <div class="dossier-foot">
+        <div class="dossier-stats"><span>PAR 72</span><span>6,823 YDS</span><span>SLOPE 135</span><span>ELLIS MAPLES, 1961</span></div>
+        <div class="dossier-btns">
+          <a class="hbh-btn" href="https://www.youtube.com/watch?v=LCetpSG1CE0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Course Video</a>
+          <a class="text-link" href="https://www.pinehurst.com/golf/courses/no-5/" target="_blank" rel="noopener">pinehurst.com &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/hero-cradle.jpg');">
+      <div class="dossier-head">
+        <div class="dossier-title">
+          <img class="dossier-logo" src="img/logo-cradle.png" alt="The Cradle logo" loading="lazy">
+          <div><h3>The Cradle</h3><div class="tagline">&ldquo;The most fun 10 acres in golf.&rdquo;</div></div>
+        </div>
+        <span class="tier add">Add-on &middot; $65</span>
+      </div>
+      <div class="dossier-grid">
+        <div class="dossier-item">
+          <div class="label">History</div>
+          <p>Gil Hanse built it in 2017 on a small patch of ground just south of the main clubhouse, next to the Thistle Dhu putting course.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Style</div>
+          <p>Nine par 3s from 56 to 127 yards, 789 yards in all. Pinehurst lists the atmosphere as &ldquo;music/barefoot,&rdquo; so the speakers are on and shoes are optional.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Difficulty</div>
+          <p>Par 27. A wedge, maybe a 9-iron, and a putter. The hard part is your touch after a couple of drinks.</p>
+        </div>
+        <div class="dossier-item">
+          <div class="label">Inside Info</div>
+          <p>We book it with the deposit for $65 each. It works best as an afternoon loop after a morning round, or on arrival day.</p>
+        </div>
+      </div>
+      <div class="dossier-foot">
+        <div class="dossier-stats"><span>PAR 27</span><span>789 YDS</span><span>9 HOLES</span><span>GIL HANSE, 2017</span></div>
+        <div class="dossier-btns">
+          <a class="hbh-btn" href="https://www.youtube.com/watch?v=sv-JjPicvLg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Course Video</a>
+          <a class="text-link" href="https://www.pinehurst.com/golf/courses/cradle-short-course/" target="_blank" rel="noopener">pinehurst.com &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="also">Also on the property: Nos. 1, 3, 6, 7, 8 &amp; 9, plus No. 11, opening in 2027</div>
     <div class="rules">
       <span>Nos. 2, 4 &amp; 10 need a 3-night stay (we're staying 4)</span>
       <span>Upgrades are charged at the pro shop on the day</span>
       <span>Book The Cradle when we put down the deposit</span>
     </div>
+  </div>
+</section>
+
+<!-- TEE TIMES -->
+<section class="day tone-cream" id="tee-times">
+  <div class="wrap reveal">
+    <div class="day-head">
+      <div>
+        <div class="day-eyebrow">The Tee Sheet</div>
+        <h2>Tee Times</h2>
+      </div>
+      <p class="day-blurb">No times yet. They come once we book. Here&rsquo;s the frame: five days, four rounds and The Cradle.</p>
+    </div>
+    <div class="teesheet">
+      <div class="tee-day"><div class="dow">Thu</div><div class="date">Nov 11</div><div class="sub">Arrival day</div>
+        <div class="slot"><div><span>Course</span><b>TBD</b></div><div><span>Tee time</span><b>&ndash;&ndash;:&ndash;&ndash;</b></div></div></div>
+      <div class="tee-day"><div class="dow">Fri</div><div class="date">Nov 12</div><div class="sub"></div>
+        <div class="slot"><div><span>Course</span><b>TBD</b></div><div><span>Tee time</span><b>&ndash;&ndash;:&ndash;&ndash;</b></div></div></div>
+      <div class="tee-day"><div class="dow">Sat</div><div class="date">Nov 13</div><div class="sub"></div>
+        <div class="slot"><div><span>Course</span><b>TBD</b></div><div><span>Tee time</span><b>&ndash;&ndash;:&ndash;&ndash;</b></div></div></div>
+      <div class="tee-day"><div class="dow">Sun</div><div class="date">Nov 14</div><div class="sub"></div>
+        <div class="slot"><div><span>Course</span><b>TBD</b></div><div><span>Tee time</span><b>&ndash;&ndash;:&ndash;&ndash;</b></div></div></div>
+      <div class="tee-day"><div class="dow">Mon</div><div class="date">Nov 15</div><div class="sub">Departure day</div>
+        <div class="slot"><div><span>Course</span><b>TBD</b></div><div><span>Tee time</span><b>&ndash;&ndash;:&ndash;&ndash;</b></div></div></div>
+    </div>
+    <div class="to-book"><span class="lbl">To schedule</span><span class="chip"><img src="img/logo-no2.png" alt="" loading="lazy">No. 2</span><span class="chip"><img src="img/logo-no10.png" alt="" loading="lazy">No. 10</span><span class="chip"><img src="img/logo-no4.png" alt="" loading="lazy">No. 4</span><span class="chip"><img src="img/logo-putterboy.png" alt="" loading="lazy">No. 5</span><span class="chip"><img src="img/logo-cradle.png" alt="" loading="lazy">The Cradle</span></div>
   </div>
 </section>
 
@@ -328,12 +592,12 @@
       <div class="hotel-cap"><div class="lbl">Home base &middot; Four nights</div><h3>The Carolina <em>Hotel</em></h3></div>
     </div>
     <div class="hotel-copy">
-      <p>They call it the &ldquo;Queen of the South.&rdquo; The Carolina has 230 Four-Diamond rooms and suites, and the rooms and grand lobby were recently renovated. Breakfast is at the Carolina Dining Room, which Pinehurst bills as the best breakfast in golf, and the Coffee House off the lobby covers the quick stuff.</p>
+      <p>They call it the &ldquo;Queen of the South.&rdquo; The Carolina has 230 Four-Diamond rooms and suites, and the rooms and grand lobby were recently renovated. The Coffee House off the lobby covers coffee and quick bites. The Carolina Dining Room is closed for renovations right now, so check Dining below for breakfast.</p>
       <ul class="amen">
         <li>Big verandas on the front</li>
         <li>Heated pool complex</li>
         <li>Putting green on the West Lawn</li>
-        <li>Carolina Dining Room &amp; Coffee House</li>
+        <li>Coffee House &amp; Carolina Vista Lounge</li>
         <li>Two shops on site</li>
       </ul>
     </div>
@@ -345,6 +609,7 @@
         <div class="perf"></div>
         <div class="rate"><span>Sharing a room</span><b>$3,000</b></div>
         <div class="rate"><span>Solo room</span><b>$4,200</b></div>
+        <a class="text-link" href="https://www.pinehurst.com/accommodations/the-carolina-hotel/" target="_blank" rel="noopener">See the rooms &rarr;</a>
       </div>
       <div class="ticket">
         <div class="ticket-photo"><img src="img/room-premium.jpg" alt="Carolina Premium double queen room" loading="lazy"></div>
@@ -352,6 +617,7 @@
         <div class="perf"></div>
         <div class="rate"><span>Sharing a room</span><b>$3,200</b></div>
         <div class="rate"><span>Solo room</span><b>$4,600</b></div>
+        <a class="text-link" href="https://www.pinehurst.com/accommodations/the-carolina-hotel/" target="_blank" rel="noopener">See the rooms &rarr;</a>
       </div>
       <div class="ticket">
         <div class="ticket-photo"><img src="img/room-suite.jpg" alt="Carolina double queen suite" loading="lazy"></div>
@@ -359,9 +625,77 @@
         <div class="perf"></div>
         <div class="rate"><span>Sharing a room</span><b>$3,440</b></div>
         <div class="rate"><span>Solo room</span><b>$5,040</b></div>
+        <a class="text-link" href="https://www.pinehurst.com/accommodations/the-carolina-villas/" target="_blank" rel="noopener">See the villas &rarr;</a>
       </div>
     </div>
     <p class="note">Room tier and roommates are still to be decided. Doubling up saves $1,200&ndash;$1,600 a head.</p>
+    <div class="lodge-links">
+      <a class="lodge-link" href="https://www.pinehurst.com/accommodations/the-carolina-hotel/" target="_blank" rel="noopener">More Carolina photos &rarr;</a>
+      <a class="lodge-link alt" href="https://www.pinehurst.com/accommodations/the-carolina-villas/" target="_blank" rel="noopener">The Carolina Villas &rarr;</a>
+    </div>
+    <p class="credit">Photos: Pinehurst Resort</p>
+  </div>
+</section>
+
+<!-- DINING -->
+<section class="day tone-pine" id="dining">
+  <div class="wrap">
+    <div class="day-head reveal">
+      <div>
+        <div class="day-eyebrow">Where We&rsquo;re Eating</div>
+        <h2>Dining</h2>
+      </div>
+      <p class="day-blurb">Breakfast every morning and a three-course dinner every night are in the package.</p>
+    </div>
+    <div class="dine-alert reveal">The package says dinner is at &ldquo;your choice of resort restaurants,&rdquo; so we&rsquo;ll confirm which ones count when we book. Villaggio is the one Pinehurst says isn&rsquo;t on meal plans. The Carolina Dining Room is closed for renovations as of fall 2026.</div>
+    <div class="dine-group reveal"><h3>Dinner</h3><div class="dine-grid">
+        <div class="dine"><div class="dine-photo"><img src="img/dine-the-deuce.jpg" alt="The Deuce" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Main Clubhouse &middot; Pub</div><h4>The Deuce</h4><p>Sits right on the 18th green of No. 2, with indoor and outdoor seats. Pub food, craft cocktails and NC beers. Pinehurst calls it the best 19th hole in golf.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/the-deuce/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-wiregrass.jpg" alt="Wiregrass" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Main Clubhouse &middot; Farm to table</div><h4>Wiregrass</h4><p>A seasonal menu built around local farms. Dinner runs 5:00&ndash;9:30 PM daily, and the bar opens at 4.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/wiregrass/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-the-1895-grille.jpg" alt="The 1895 Grille" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Holly Inn &middot; Fine dining</div><h4>The 1895 Grille</h4><p>Upscale dining in the historic Holly Inn, with nightly specials. Save room for the triple chocolate souffl&eacute;.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/the-1895-grille/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-the-tavern.jpg" alt="The Tavern" loading="lazy"></div>
+          <div class="dine-body"><div class="where">In the Village &middot; Pub</div><h4>The Tavern</h4><p>An antique bar shipped over from Scotland, homemade chips, and pastas and steaks at night. There&rsquo;s a string-lit patio too.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/the-tavern/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-pl8te.jpg" alt="PL8TE, Southern Table" loading="lazy"></div>
+          <div class="dine-body"><div class="where">No. 8 Clubhouse &middot; Southern</div><h4>PL8TE, Southern Table</h4><p>Upscale Southern food: shrimp and grits, buttermilk fried chicken, ribeye with a blue cheese crust.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/pl8te-southern-table/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-station-21.jpg" alt="Station 21" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Pinehurst Sandmines &middot; Southwestern</div><h4>Station 21</h4><p>A Southwestern grill at No. 10, with brisket tacos, carne asada and a patio over the first tee.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/station-21/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-pinehurst-brewing.jpg" alt="Pinehurst Brewing Co." loading="lazy"></div>
+          <div class="dine-body"><div class="where">In the Village &middot; Brewery</div><h4>Pinehurst Brewing Co.</h4><p>House-brewed beer and barbecue, with a beer garden that stays open until 10.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/pinehurst-brewing-company/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-carolina-dining-room.jpg" alt="Carolina Dining Room" loading="lazy"><span class="dine-flag">Renovating</span></div>
+          <div class="dine-body"><div class="where">Carolina Hotel &middot; French-American</div><h4>Carolina Dining Room</h4><p>The hotel&rsquo;s signature restaurant, with French cooking alongside American classics. Closed for renovations as of now.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/carolina-dining-room/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+    </div></div>
+    <div class="dine-group reveal"><h3>Breakfast</h3><div class="dine-grid">
+        <div class="dine"><div class="dine-photo"><img src="img/dine-pl8te.jpg" alt="PL8TE Biscuit Buffet" loading="lazy"></div>
+          <div class="dine-body"><div class="where">No. 8 Clubhouse</div><h4>PL8TE Biscuit Buffet</h4><p>A Southern breakfast biscuit buffet every day, 6:00&ndash;9:30 AM.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/pl8te-southern-table/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-station-21.jpg" alt="Station 21 Chilaquiles Buffet" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Pinehurst Sandmines</div><h4>Station 21 Chilaquiles Buffet</h4><p>A Southwestern breakfast buffet, 6:00&ndash;9:30 AM. Perfect for the No. 10 morning.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/station-21/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-coffee-house.jpg" alt="The Coffee House" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Carolina Hotel lobby</div><h4>The Coffee House</h4><p>Coffee, breakfast sandwiches and pastries steps from our rooms. Wraps and salads at lunch.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/the-carolina-coffee-shop/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+    </div></div>
+    <div class="dine-group reveal"><h3>Drinks &amp; off the plan</h3><div class="dine-grid">
+        <div class="dine"><div class="dine-photo"><img src="img/dine-north-south-bar.jpg" alt="North &amp; South Bar" loading="lazy"></div>
+          <div class="dine-body"><div class="where">The Manor</div><h4>North &amp; South Bar</h4><p>Old-school golf bar with about 150 bourbons, whiskeys, ryes and Scotches, including Pinehurst Reserve, which Woodford blends for the resort.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/north-south-bar/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-carolina-vista.jpg" alt="Carolina Vista Lounge" loading="lazy"></div>
+          <div class="dine-body"><div class="where">Carolina Hotel</div><h4>Carolina Vista Lounge</h4><p>A newly renovated cocktail bar in our hotel. Good for a nightcap.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/carolina-vista-lounge/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+        <div class="dine"><div class="dine-photo"><img src="img/dine-villaggio.jpg" alt="Villaggio Ristorante" loading="lazy"><span class="dine-flag">Not on meal plan</span></div>
+          <div class="dine-body"><div class="where">Magnolia Inn &middot; Italian</div><h4>Villaggio Ristorante</h4><p>Traditional Italian with house-made pasta. Pinehurst says it is <b>not</b> included on meal plans, so this one&rsquo;s on us.</p>
+          <a class="text-link" href="https://www.pinehurst.com/dining/villaggio/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
+    </div></div>
     <p class="credit">Photos: Pinehurst Resort</p>
   </div>
 </section>
@@ -438,6 +772,7 @@
     <h2>See you at <em>the Cradle</em><svg class="closing-mark" aria-hidden="true"><use href="#ic-pine"/></svg></h2>
     <div class="date">November 11&ndash;15, 2027 &middot; Pinehurst Resort</div>
     <div class="actions">
+      <a class="btn" href="https://shop.pinehurst.com/" target="_blank" rel="noopener"><img src="img/logo-putterboy.png" alt="">Pro Shop</a>
       <a class="btn" href="pinehurst-boyz.ics">&#128197; Add to Calendar</a>
       <a class="btn" href="https://www.pinehurst.com/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-pine"/></svg>Pinehurst Resort</a>
     </div>
