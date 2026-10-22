@@ -72,9 +72,8 @@
   .hero h1 em{font-style:italic; font-weight:300; color:var(--brass-light);}
   .hero-mark{display:inline-block; height:.78em; width:.65em; vertical-align:-.08em; margin:0 .2em; color:var(--brass-light);}
   .hero .sub{margin-top:24px; font-size:clamp(14px,1.6vw,17px); opacity:.9;}
-  .pill{display:inline-block; margin-top:22px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; border:1px solid rgba(251,248,241,.45); border-radius:100px; padding:7px 14px; color:var(--bone);}
-  .hero .eyebrow, .hero h1, .hero .sub, .hero .pill{animation:heroIn .9s ease both;}
-  .hero h1{animation-delay:.12s;} .hero .sub{animation-delay:.3s;} .hero .pill{animation-delay:.45s;}
+  .hero .eyebrow, .hero h1, .hero .sub{animation:heroIn .9s ease both;}
+  .hero h1{animation-delay:.12s;} .hero .sub{animation-delay:.3s;}
   @keyframes heroIn{from{opacity:0; transform:translateY(24px);}to{opacity:1; transform:none;}}
 
   /* sections */
@@ -347,7 +346,7 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
     .hero-slides img.on, .dossier, .tee-day, .dine, .dine-photo img, .hbh-btn, .lodge-link, .wx-ic, .cd-dot,
-    .hero .eyebrow, .hero h1, .hero .sub, .hero .pill, .hotel img.on{animation:none;}
+    .hero .eyebrow, .hero h1, .hero .sub, .hotel img.on{animation:none;}
     html{scroll-behavior:auto;}
   }
 </style>
@@ -400,7 +399,6 @@
     <div class="eyebrow">Nov 11&ndash;15, 2027 &middot; Village of Pinehurst, NC</div>
     <h1><svg class="hero-mark" aria-hidden="true"><use href="#ic-pine"/></svg>Pinehurst <em>Boyz</em><svg class="hero-mark" aria-hidden="true"><use href="#ic-pine"/></svg></h1>
     <p class="sub">Four nights, four rounds, and the Cradle of American Golf.</p>
-    <span class="pill">Early planning &middot; details to come</span>
   </div>
   <div class="hero-caption" id="heroCap">No. 2 &middot; Hole 3</div>
 </section>
