@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="js-anim">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -265,6 +265,85 @@
   .btn svg{width:13px; height:16px; color:var(--pine);}
   footer{background:var(--pine-dark); color:var(--bone); text-align:center; padding:24px 6vw 34px; font-size:11.5px; opacity:.55; letter-spacing:.04em; border-top:1px solid rgba(251,248,241,.08);}
 
+
+  /* ===== animations ===== */
+  .dossier{position:relative; overflow:hidden;}
+  .card,.ticket,.tee-day,.dine,.dossier{transform-style:preserve-3d;}
+  .js-anim .dossier-logo{opacity:0; transform:scale(2.4) rotate(-14deg);}
+  .js-anim .to-book .chip img{opacity:0; transform:scale(2.4) rotate(-14deg);}
+  .stamped{animation:stampIn .55s cubic-bezier(.2,.9,.3,1.25) forwards !important;}
+  @keyframes stampIn{0%{opacity:0; transform:scale(2.4) rotate(-14deg);}70%{opacity:1; transform:scale(.92) rotate(2deg);}100%{opacity:1; transform:none;}}
+  .thud{animation:thud .35s ease-out;}
+  @keyframes thud{0%{translate:0 0;}30%{translate:0 3px;}60%{translate:0 -1px;}100%{translate:0 0;}}
+
+  /* split-flap tee sheet */
+  .flapline{display:inline-flex; gap:1px; perspective:300px;}
+  .flap{display:inline-block; min-width:.78em; text-align:center; background:var(--navy); color:var(--bone); border-radius:2px; padding:2px 1px; line-height:1.15; position:relative; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700;}
+  .flap::after{content:""; position:absolute; left:0; right:0; top:50%; height:1px; background:rgba(0,0,0,.45);}
+  .flap.sp{background:none; min-width:.4em;}
+  .flap.sp::after{display:none;}
+  .flap.go{animation:flapflip .1s linear;}
+  @keyframes flapflip{50%{transform:rotateX(90deg);}}
+
+  /* turtleback */
+  .turtle{position:relative; width:150px; height:58px; flex:none;}
+  .turtle svg{position:absolute; inset:0; width:150px; height:58px; overflow:visible;}
+  .turtle .tb-ball{position:absolute; left:0; top:0; width:9px; height:9px; margin:-4.5px 0 0 -4.5px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#fff,#cfcfcf); box-shadow:0 1px 2px rgba(0,0,0,.4); offset-path:path('M-14 52 L6 47 C 36 47, 50 12, 75 12 C 100 12, 114 47, 144 47 L164 52'); offset-rotate:0deg; offset-distance:8%; opacity:0;}
+  .turtle .tb-lbl{position:absolute; right:0; bottom:-6px; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--pine); opacity:.7;}
+  .turtle.roll .tb-ball{animation:tbroll 3.2s cubic-bezier(.3,.6,.4,1) forwards;}
+  @keyframes tbroll{0%{offset-distance:8%; opacity:0;}8%{opacity:1;}42%{offset-distance:46%; animation-timing-function:ease-in;}50%{offset-distance:46.5%; animation-timing-function:ease-in;}92%{offset-distance:2%; opacity:1;}100%{offset-distance:0%; opacity:0;}}
+
+  /* Payne Stewart 1999 */
+  .payne{position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:radial-gradient(circle, rgba(251,248,241,.94) 0%, rgba(251,248,241,.86) 60%, rgba(251,248,241,.7) 100%); opacity:0; pointer-events:none;}
+  .payne.show{animation:payneIn 3.4s ease forwards;}
+  .payne .yr{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(4rem,12vw,7.5rem); line-height:.9; color:var(--pine-dark); letter-spacing:-.02em;}
+  .payne .fist{font-size:clamp(2.2rem,6vw,3.4rem); display:inline-block;}
+  .payne.show .fist{animation:pump .5s ease-in-out .35s 3;}
+  .payne .cap{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--brass-dark); margin-top:12px; max-width:380px; padding:0 16px; line-height:1.6;}
+  @keyframes payneIn{0%{opacity:0;}10%{opacity:1;}80%{opacity:1;}100%{opacity:0;}}
+  @keyframes pump{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-16px) rotate(-12deg);}}
+  .payne-replay{cursor:pointer;}
+
+  /* No. 10 mine cart */
+  .dossier[data-course="no10"]{padding-bottom:58px;}
+  .cart-track{position:absolute; left:0; right:0; bottom:14px; height:34px; pointer-events:none;}
+  .cart-track::before{content:""; position:absolute; left:0; right:0; bottom:2px; border-bottom:2px dashed rgba(217,87,74,.35);}
+  .cart{position:absolute; bottom:4px; left:-70px; width:58px; height:30px;}
+  .cart.go{animation:cartroll 7s cubic-bezier(.45,.05,.55,.95) forwards;}
+  @keyframes cartroll{from{left:-70px;}to{left:calc(100% + 20px);}}
+  .cart .wheel{transform-box:fill-box; transform-origin:center;}
+  .cart.go .wheel{animation:wspin .5s linear infinite;}
+  @keyframes wspin{to{transform:rotate(360deg);}}
+  .cart.go .bodyc{animation:bump .25s ease-in-out infinite;}
+  @keyframes bump{50%{transform:translateY(-1px);}}
+
+  /* time-of-day hero tint */
+  .hero-tint{position:absolute; inset:0; pointer-events:none; z-index:1;}
+  .hero-tint i{position:absolute; inset:0; transition:opacity 4s ease;}
+  .hero-tint .warm{background:linear-gradient(180deg, rgba(255,170,90,.55) 0%, rgba(240,120,60,.35) 45%, rgba(120,50,20,.25) 100%); mix-blend-mode:soft-light; opacity:var(--warm,0);}
+  .hero-tint .night{background:linear-gradient(180deg, rgba(14,22,48,.75) 0%, rgba(20,28,60,.55) 60%, rgba(8,10,22,.7) 100%); mix-blend-mode:multiply; opacity:var(--night,0);}
+  .hero-shade,.hero-content,.hero-caption{z-index:2;}
+  .hero-shade{position:absolute;}
+
+  /* cursor trail, toasts, rain, confetti, party */
+  .cursor-pine{position:fixed; z-index:149; pointer-events:none; font-size:13px; color:var(--brass); will-change:transform,opacity; animation:pinefade .9s ease-out forwards;}
+  @keyframes pinefade{0%{opacity:.9; transform:translate(-50%,-50%) scale(1) rotate(0);}100%{opacity:0; transform:translate(-50%,40%) scale(.45) rotate(var(--r,20deg));}}
+  .confetti-pc{position:fixed; z-index:500; pointer-events:none; will-change:transform,opacity;}
+  @keyframes confburst{to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)); opacity:0;}}
+  .falling-pine{position:fixed; top:-60px; z-index:450; pointer-events:none; will-change:transform;}
+  @keyframes pinefall{to{transform:translateY(calc(100vh + 120px)) rotate(var(--spin));}}
+  .boyz-toast{position:fixed; left:50%; bottom:12%; transform:translateX(-50%) translateY(30px); z-index:520; background:var(--pine-dark); color:var(--bone); font-family:'Fraunces',serif; font-weight:600; font-size:clamp(1.1rem,3.5vw,1.5rem); padding:15px 30px; border-radius:100px; box-shadow:0 24px 55px -20px rgba(0,0,0,.6); opacity:0; transition:opacity .4s ease, transform .4s cubic-bezier(.2,.9,.3,1.4); pointer-events:none; white-space:nowrap;}
+  .boyz-toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  @keyframes partyhue{to{filter:hue-rotate(360deg);}}
+  body.party{animation:partyhue 2.5s linear infinite;}
+  @keyframes wiggle{0%,100%{transform:rotate(0);}25%{transform:rotate(.5deg);}75%{transform:rotate(-.5deg);}}
+  body.party section{animation:wiggle .45s ease-in-out infinite;}
+  @media (prefers-reduced-motion: reduce){
+    .js-anim .dossier-logo, .js-anim .to-book .chip img{opacity:1; transform:none;}
+    .turtle .tb-ball, .cart-track{display:none;}
+    body.party, body.party section{animation:none;}
+  }
+
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
     .hero-slides img.on, .dossier, .tee-day, .dine, .dine-photo img, .hbh-btn, .lodge-link, .wx-ic, .cd-dot,
@@ -304,15 +383,18 @@
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-slides" id="heroSlides">
-    <img class="on" src="img/hero-no2.jpg" alt="Pinehurst No. 2 - Hole 9" data-cap="No. 2 &middot; Hole 9" style="object-position:center 60%">
-    <img src="img/hero-no10.jpg" alt="Pinehurst No. 10 - Hole 8" data-cap="No. 10 &middot; Hole 8" style="object-position:center" loading="lazy">
-    <img src="img/hero-no4.jpg" alt="Pinehurst No. 4" data-cap="No. 4" style="object-position:center" loading="lazy">
-    <img src="img/hero-no5.jpg" alt="Pinehurst No. 5" data-cap="No. 5" style="object-position:center 70%" loading="lazy">
+    <img class="on" src="img/hero-no2-h3.jpg" alt="Pinehurst No. 2 - Hole 3" data-cap="No. 2 &middot; Hole 3" style="object-position:center 55%">
+    <img src="img/hero-no10-h8.jpg" alt="Pinehurst No. 10 - Hole 8" data-cap="No. 10 &middot; Hole 8" style="object-position:center" loading="lazy">
+    <img src="img/hero-no4-h5.jpg" alt="Pinehurst No. 4 - Hole 5" data-cap="No. 4 &middot; Hole 5" style="object-position:center 60%" loading="lazy">
+    <img src="img/hero-no2-h4.jpg" alt="Pinehurst No. 2 - Hole 4" data-cap="No. 2 &middot; Hole 4" style="object-position:center 60%" loading="lazy">
+    <img src="img/hero-no10-h17.jpg" alt="Pinehurst No. 10 - Hole 17" data-cap="No. 10 &middot; Hole 17" style="object-position:center 60%" loading="lazy">
     <img src="img/hero-cradle.jpg" alt="Pinehurst The Cradle" data-cap="The Cradle" style="object-position:center" loading="lazy">
+    <img src="img/hero-no2-h16.jpg" alt="Pinehurst No. 2 - Hole 16" data-cap="No. 2 &middot; Hole 16" style="object-position:center 65%" loading="lazy">
     <img src="img/hero-cradle-2.jpg" alt="Pinehurst The Cradle" data-cap="The Cradle" style="object-position:center 65%" loading="lazy">
   </div>
+  <div class="hero-tint" aria-hidden="true"><i class="warm"></i><i class="night"></i></div>
   <div class="hero-shade"></div>
   <div class="hero-content">
     <div class="eyebrow">Nov 11&ndash;15, 2027 &middot; Village of Pinehurst, NC</div>
@@ -320,7 +402,7 @@
     <p class="sub">Four nights, four rounds, and the Cradle of American Golf.</p>
     <span class="pill">Early planning &middot; details to come</span>
   </div>
-  <div class="hero-caption" id="heroCap">No. 2 &middot; Hole 9</div>
+  <div class="hero-caption" id="heroCap">No. 2 &middot; Hole 3</div>
 </section>
 
 <!-- PACKAGE -->
@@ -359,7 +441,7 @@
     </div>
     <p class="dossier-intro">Four rounds and a bonus loop: the U.S. Open course, Doak&rsquo;s sand-mine course, Hanse&rsquo;s sandy redesign and old-school No. 5, then The Cradle for fun. Here&rsquo;s what we&rsquo;re walking into.</p>
 
-    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no2.jpg');">
+    <div class="dossier reveal" data-course="no2" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no2.jpg');">
       <div class="dossier-head">
         <div class="dossier-title">
           <img class="dossier-logo" src="img/logo-no2.png" alt="No. 2 logo" loading="lazy">
@@ -393,7 +475,7 @@
       </div>
     </div>
 
-    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/hero-no10.jpg');">
+    <div class="dossier reveal" data-course="no10" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/hero-no10.jpg');">
       <div class="dossier-head">
         <div class="dossier-title">
           <img class="dossier-logo" src="img/logo-no10.png" alt="No. 10 logo" loading="lazy">
@@ -427,7 +509,7 @@
       </div>
     </div>
 
-    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no4.jpg');">
+    <div class="dossier reveal" data-course="no4" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no4.jpg');">
       <div class="dossier-head">
         <div class="dossier-title">
           <img class="dossier-logo" src="img/logo-no4.png" alt="No. 4 logo" loading="lazy">
@@ -461,7 +543,7 @@
       </div>
     </div>
 
-    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no5.jpg');">
+    <div class="dossier reveal" data-course="no5" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/dossier-no5.jpg');">
       <div class="dossier-head">
         <div class="dossier-title">
           <img class="dossier-logo" src="img/logo-putterboy.png" alt="No. 5 logo" loading="lazy">
@@ -495,7 +577,7 @@
       </div>
     </div>
 
-    <div class="dossier reveal" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/hero-cradle.jpg');">
+    <div class="dossier reveal" data-course="cradle" style="background-image:linear-gradient(rgba(251,248,241,.9),rgba(251,248,241,.9)), url('img/hero-cradle.jpg');">
       <div class="dossier-head">
         <div class="dossier-title">
           <img class="dossier-logo" src="img/logo-cradle.png" alt="The Cradle logo" loading="lazy">
@@ -840,6 +922,88 @@
         render(days.map(function(x){ var a=agg[x[1]]; var rp=a.n?Math.round(a.wet/a.n*100):0; return {label:x[0]+' · 11/'+x[1], ic:rp>=40?'🌧️':(rp>=20?'⛅':'☀️'), hi:a.n?Math.round(a.hi/a.n):'—', lo:a.n?Math.round(a.lo/a.n):'—', rain:rp+'% rain'}; }));
         setMode('Typical · '+agg[11].n+'-year average'); }).catch(fail);
   }
+})();
+</script>
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var COLS=['#B98B3A','#DDB66E','#3E5B45','#22362A','#FBF8F1','#1F2A44'];
+
+  // run fn once when el is well into the viewport (scroll-based, works everywhere)
+  var watchers=[];
+  function onEnter(el,fn,frac){ if(el) watchers.push({el:el,fn:fn,frac:frac||0.8,done:false}); }
+  function checkWatchers(){ var vh=window.innerHeight; watchers.forEach(function(w){ if(w.done) return; var r=w.el.getBoundingClientRect(); if(r.top<vh*w.frac && r.bottom>0){ w.done=true; w.fn(); } }); }
+  var ticking=false; window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ ticking=false; checkWatchers(); }); } },{passive:true});
+  window.addEventListener('resize',checkWatchers);
+
+  function confetti(x,y,n){ if(reduce)return; for(var i=0;i<(n||60);i++){ var p=document.createElement('div'); p.className='confetti-pc'; if(Math.random()<.22){p.textContent='🌲'; p.style.fontSize=(13+Math.random()*10)+'px';} else {p.style.width=(6+Math.random()*6)+'px'; p.style.height=(8+Math.random()*9)+'px'; p.style.background=COLS[Math.floor(Math.random()*COLS.length)]; p.style.borderRadius=Math.random()<.5?'2px':'50%';} p.style.left=x+'px'; p.style.top=y+'px'; var a=Math.random()*6.283, d=90+Math.random()*280; p.style.setProperty('--dx',(Math.cos(a)*d)+'px'); p.style.setProperty('--dy',(Math.sin(a)*d+220)+'px'); p.style.setProperty('--rot',(Math.random()*760-380)+'deg'); var du=1.2+Math.random()*1.4; p.style.animation='confburst '+du+'s cubic-bezier(.15,.6,.4,1) forwards'; document.body.appendChild(p); (function(el,t){setTimeout(function(){el.remove();},t*1000+120);})(p,du);} }
+  function downpour(n){ if(reduce)return; var g=['🌲','🌲','🌲','⛳','🏌️']; for(var i=0;i<(n||24);i++){ var o=document.createElement('div'); o.className='falling-pine'; o.textContent=g[Math.floor(Math.random()*g.length)]; o.style.left=(Math.random()*100)+'vw'; o.style.fontSize=(18+Math.random()*22)+'px'; o.style.setProperty('--spin',(Math.random()*720-360)+'deg'); var du=2.6+Math.random()*2.2; o.style.animation='pinefall '+du+'s linear '+(Math.random()*.5)+'s forwards'; document.body.appendChild(o); (function(el,t){setTimeout(function(){el.remove();},(t+1)*1000);})(o,du);} }
+  function toast(msg,ms){ var t=document.createElement('div'); t.className='boyz-toast'; t.textContent=msg; document.body.appendChild(t); requestAnimationFrame(function(){t.classList.add('show');}); setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){t.remove();},500); },ms||2600); }
+
+  // ===== 2. pine cursor trail =====
+  if(!reduce && fine){ var lastT=0; document.addEventListener('mousemove',function(e){ var now=Date.now(); if(now-lastT<70) return; lastT=now; var s=document.createElement('div'); s.className='cursor-pine'; s.textContent=Math.random()<.5?'🌲':'✦'; s.style.setProperty('--r',(Math.random()*80-40)+'deg'); s.style.left=e.clientX+'px'; s.style.top=e.clientY+'px'; document.body.appendChild(s); setTimeout(function(){s.remove();},900); }); }
+
+  // ===== 7. 3D tilt =====
+  if(!reduce && fine){ document.querySelectorAll('.card, .ticket, .tee-day, .dine, .dossier').forEach(function(c){ var big=c.classList.contains('dossier'), k=big?3:9; c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5; c.style.transition='transform .08s linear'; c.style.transform='perspective(900px) rotateY('+(px*k)+'deg) rotateX('+(-py*k)+'deg) translateY(-5px)'; }); c.addEventListener('mouseleave',function(){ c.style.transition='transform .4s ease'; c.style.transform=''; }); }); }
+
+  // ===== 8. secret "boyz" + Konami party =====
+  var buf=''; window.addEventListener('keydown',function(e){ if(!e.key||e.key.length!==1) return; buf=(buf+e.key.toLowerCase()).slice(-6); if(buf.indexOf('boyz')>-1){ buf=''; downpour(40); for(var k=0;k<5;k++){(function(k){setTimeout(function(){confetti(window.innerWidth*(.2+Math.random()*.6), window.innerHeight*.32, 55);},k*220);})(k);} toast("LET'S GO BOYZ 🌲⛳"); } });
+  var seq=['arrowup','arrowup','arrowdown','arrowdown','arrowleft','arrowright','arrowleft','arrowright','b','a'], si=0, partying=false;
+  window.addEventListener('keydown',function(e){ var k=(e.key||'').toLowerCase(); if(k===seq[si]){ si++; if(si===seq.length){ si=0; party(); } } else { si=(k===seq[0])?1:0; } });
+  function party(){ if(partying) return; partying=true; document.body.classList.add('party'); var iv=setInterval(function(){downpour(12);},500); for(var k=0;k<8;k++){(function(k){setTimeout(function(){confetti(Math.random()*window.innerWidth, window.innerHeight*.3, 50);},k*400);})(k);} toast('🎉 PARTY MODE 🎉',6000); setTimeout(function(){ clearInterval(iv); document.body.classList.remove('party'); partying=false; },6500); }
+
+  // ===== 12. course logos stamp in =====
+  function stamp(img,card){ if(reduce) return; img.classList.add('stamped'); if(card){ setTimeout(function(){ card.classList.remove('thud'); void card.offsetWidth; card.classList.add('thud'); },330); } }
+  document.querySelectorAll('.dossier').forEach(function(d){ var lg=d.querySelector('.dossier-logo'); onEnter(d,function(){ stamp(lg,d); },0.75); });
+  var chips=[].slice.call(document.querySelectorAll('.to-book .chip img'));
+  onEnter(document.querySelector('.to-book'),function(){ chips.forEach(function(im,i){ setTimeout(function(){ stamp(im); },i*170); }); },0.9);
+
+  // ===== 9. Payne Stewart moment + 10. turtleback (No. 2) =====
+  var d2=document.querySelector('.dossier[data-course="no2"]');
+  if(d2){
+    var head=d2.querySelector('.dossier-head');
+    var tb=document.createElement('div'); tb.className='turtle'; tb.setAttribute('aria-hidden','true');
+    tb.innerHTML='<svg viewBox="0 0 150 58"><path d="M0 50 L6 47 C 36 47, 50 12, 75 12 C 100 12, 114 47, 144 47 L150 50 Z" fill="#5E7C55"/><path d="M6 47 C 36 47, 50 12, 75 12 C 100 12, 114 47, 144 47" fill="none" stroke="#3E5B45" stroke-width="1.5"/><line x1="96" y1="14" x2="96" y2="-10" stroke="#22362A" stroke-width="1.2"/><path d="M96 -10 L110 -6 L96 -2Z" fill="#B98B3A"/></svg><div class="tb-ball"></div><span class="tb-lbl">Turtleback</span>';
+    head.appendChild(tb);
+    function roll(){ if(reduce||tb.classList.contains('roll')) return; tb.classList.add('roll'); setTimeout(function(){ tb.classList.remove('roll'); },3300); }
+    d2.addEventListener('mouseenter',roll);
+    var pv=document.createElement('div'); pv.className='payne'; pv.setAttribute('aria-hidden','true');
+    pv.innerHTML='<div><span class="fist">✊</span></div><div class="yr">1999</div><div class="cap">Payne Stewart&rsquo;s 15-foot par putt on 18 won the U.S. Open</div>';
+    d2.appendChild(pv);
+    function payne(){ if(reduce) return; pv.classList.remove('show'); void pv.offsetWidth; pv.classList.add('show'); var r=d2.getBoundingClientRect(); setTimeout(function(){ confetti(r.left+r.width/2, Math.max(80,r.top+r.height*.4), 70); },350); setTimeout(roll,3500); }
+    onEnter(d2,payne,0.6);
+    var lg2=d2.querySelector('.dossier-logo'); lg2.classList.add('payne-replay'); lg2.title='1999'; lg2.addEventListener('click',payne);
+  }
+
+  // ===== 13. No. 10 mine cart =====
+  var d10=document.querySelector('.dossier[data-course="no10"]');
+  if(d10 && !reduce){
+    var tr=document.createElement('div'); tr.className='cart-track'; tr.setAttribute('aria-hidden','true');
+    tr.innerHTML='<svg class="cart" viewBox="0 0 58 30"><g class="bodyc"><path d="M8 6 C 14 -2, 22 2, 28 -1 C 36 -4, 44 2, 50 6 Z" fill="#E7D3A8"/><path d="M4 6 H54 L48 21 H10 Z" fill="none" stroke="#D9574A" stroke-width="2.4" stroke-linejoin="round"/><path d="M12 11 H46 M14 16 H44" stroke="#D9574A" stroke-width="1.6"/></g><g class="wheel"><circle cx="17" cy="25" r="4.2" fill="#FBF8F1" stroke="#D9574A" stroke-width="2"/><path d="M17 21 V29 M13 25 H21" stroke="#D9574A" stroke-width="1.2"/></g><g class="wheel"><circle cx="41" cy="25" r="4.2" fill="#FBF8F1" stroke="#D9574A" stroke-width="2"/><path d="M41 21 V29 M37 25 H45" stroke="#D9574A" stroke-width="1.2"/></g></svg>';
+    d10.appendChild(tr);
+    var cart=tr.querySelector('.cart'), rolling=false;
+    function go(){ if(rolling) return; rolling=true; cart.classList.remove('go'); void cart.getBoundingClientRect(); cart.classList.add('go'); setTimeout(function(){ rolling=false; cart.classList.remove('go'); },7100); }
+    onEnter(d10,function(){ go(); setInterval(function(){ var r=d10.getBoundingClientRect(); if(r.top<window.innerHeight && r.bottom>0) go(); },14000); },0.7);
+    d10.addEventListener('mouseenter',go);
+  }
+
+  // ===== 11. split-flap tee sheet =====
+  var CH='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-';
+  var cells=[].slice.call(document.querySelectorAll('.tee-day .slot b'));
+  cells.forEach(function(b){ var fin=b.textContent; b.setAttribute('aria-label',fin); b.innerHTML='<span class="flapline" aria-hidden="true">'+fin.split('').map(function(c){ return '<span class="flap'+(c===' '?' sp':'')+'" data-f="'+c.replace(/"/g,'&quot;')+'">'+(c===' '?'&nbsp;':c)+'</span>'; }).join('')+'</span>'; });
+  function flipAll(){ if(reduce) return; cells.forEach(function(b,ci){ [].slice.call(b.querySelectorAll('.flap:not(.sp)')).forEach(function(f,fi){ var fin=f.getAttribute('data-f'), n=6+fi*2+ci, k=0; (function step(){ f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); if(k<n){ f.textContent=CH[Math.floor(Math.random()*CH.length)]; k++; setTimeout(step,70); } else { f.textContent=fin; } })(); }); }); }
+  onEnter(document.querySelector('.teesheet'),flipAll,0.8);
+  document.querySelectorAll('.tee-day').forEach(function(td){ td.addEventListener('click',flipAll); });
+
+  // ===== 14. hero light follows the viewer's time of day =====
+  var hero=document.getElementById('hero');
+  function light(){ var q=location.search.match(/[?&]hour=(\d+(?:\.\d+)?)/); var d=new Date(), hr=q?parseFloat(q[1]):d.getHours()+d.getMinutes()/60;
+    var warm=Math.max(0,1-Math.abs(hr-18)/2.5), dawn=0.65*Math.max(0,1-Math.abs(hr-7)/1.8), night=hr>=20?Math.min(1,(hr-20)/1.5):(hr<5.5?1:(hr<7?Math.max(0,(7-hr)/1.5):0));
+    hero.style.setProperty('--warm',Math.max(warm,dawn).toFixed(2)); hero.style.setProperty('--night',(night*.9).toFixed(2)); }
+  if(hero){ light(); setInterval(light,60000); }
+
+  checkWatchers();
 })();
 </script>
 </body>
