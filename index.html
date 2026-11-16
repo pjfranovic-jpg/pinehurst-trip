@@ -158,6 +158,45 @@
   .tee-foot{margin-top:22px; font-size:13.5px; line-height:1.6; opacity:.85; max-width:640px;}
   .tee-foot b{color:var(--pine-dark);}
   .dossier-when{display:inline-block; margin-top:9px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; background:var(--pine-dark); color:var(--bone); padding:4px 10px; border-radius:100px;}
+  /* day-by-day (Cabot style) */
+  .sched{margin-top:44px; display:flex; flex-direction:column;}
+  .sstop{display:grid; grid-template-columns:120px 1fr; gap:20px; padding-bottom:40px;}
+  .sstop:last-child{padding-bottom:0;}
+  .sstop > div:last-child{min-width:0;}
+  .srail{display:flex; flex-direction:column; align-items:center;}
+  .sdot{width:38px; height:38px; border-radius:50%; background:var(--bone); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; box-shadow:0 0 0 3px var(--brass);}
+  .tone-cream .sdot{background:var(--cream); box-shadow:0 0 0 3px var(--brass-dark);}
+  .tone-sand .sdot{background:var(--sand); box-shadow:0 0 0 3px var(--brass-dark);}
+  .sline{flex:1; width:1.5px; background:var(--line); margin-top:6px;}
+  .tone-pine .sline, .tone-navy .sline{background:rgba(251,248,241,.28);}
+  .sstop:last-child .sline{display:none;}
+  .slabel{font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.6; margin-bottom:8px;}
+  .stitle{font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; margin-bottom:6px; display:flex; align-items:center; gap:10px;}
+  .stitle img{height:34px; width:auto; max-width:52px; object-fit:contain;}
+  .tone-pine .stitle img, .tone-navy .stitle img{background:var(--bone); border-radius:6px; padding:3px 5px; height:38px;}
+  .sdetail{font-size:14px; line-height:1.6; opacity:.85; max-width:540px;}
+  .sdetail a{color:inherit;}
+  .sstop .text-link{display:inline-block; margin-top:10px;}
+  .tone-pine .sstop .text-link, .tone-navy .sstop .text-link{color:var(--brass-light); border-color:var(--brass-light);}
+  .tees{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:16px; margin-top:14px; max-width:760px;}
+  .tee-tk{position:relative; background:var(--bone); color:var(--ink); border-radius:4px; padding:18px 20px 16px; box-shadow:0 14px 34px -20px rgba(0,0,0,.4); transition:transform .28s ease;}
+  .tee-tk:hover{transform:translateY(-5px);}
+  .tee-tk::before,.tee-tk::after{content:""; position:absolute; top:50%; transform:translateY(-50%); width:16px; height:16px; border-radius:50%;}
+  .tee-tk::before{left:-8px;} .tee-tk::after{right:-8px;}
+  .tone-cream .tee-tk::before, .tone-cream .tee-tk::after{background:var(--cream);}
+  .tone-sand .tee-tk::before, .tone-sand .tee-tk::after{background:var(--sand);}
+  .tone-pine .tee-tk::before, .tone-pine .tee-tk::after{background:var(--pine-dark);}
+  .tone-navy .tee-tk::before, .tone-navy .tee-tk::after{background:var(--navy);}
+  .tee-tk .ctag{display:flex; align-items:center; gap:6px; font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--brass-dark);}
+  .tee-tk .ctag img{height:18px; width:22px; object-fit:contain;}
+  .tee-tk .tt{font-family:'JetBrains Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:-.02em; margin-top:6px; color:var(--pine-dark);}
+  .tee-tk .tt .flap{font-size:1.2rem; padding:3px 2px; min-width:.8em;}
+  .tee-tk .perf{border-top:1.5px dashed var(--line); margin:10px 0 10px;}
+  .tee-tk .grp{font-size:12.5px; font-weight:600; display:flex; gap:8px; align-items:baseline;}
+  .tee-tk .grp .n{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--brass-dark); font-weight:700;}
+  .tee-tk .grp em{font-style:normal; font-weight:500; opacity:.55;}
+  .tee-tk .cad{position:absolute; top:14px; right:14px; font-family:'JetBrains Mono',monospace; font-size:8.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; background:#F3E4C4; color:var(--brass-dark); padding:3px 7px; border-radius:100px;}
+  @media(max-width:560px){ .sstop{grid-template-columns:56px 1fr; gap:12px;} .sdot{width:30px; height:30px; font-size:13px;} }
   /* dining plan */
   .meal-plan{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin-top:30px;}
   @media(max-width:860px){ .meal-plan{grid-template-columns:repeat(2,minmax(0,1fr));} }
@@ -177,12 +216,12 @@
   @media(max-width:760px){ .spa-plan{grid-template-columns:1fr;} }
   .spa-plan > p{font-size:15px; line-height:1.7; opacity:.88;}
   .spa-windows{display:grid; gap:10px;}
-  .spa-win{display:flex; justify-content:space-between; gap:14px; align-items:baseline; background:var(--bone); border-radius:6px; padding:12px 16px; box-shadow:0 12px 30px -22px rgba(0,0,0,.45);}
+  .spa-win{color:var(--ink); display:flex; justify-content:space-between; gap:14px; align-items:baseline; background:var(--bone); border-radius:6px; padding:12px 16px; box-shadow:0 12px 30px -22px rgba(0,0,0,.45);}
   .spa-win .d{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--brass-dark); white-space:nowrap;}
   .spa-win .w{font-size:13px; text-align:right;}
   .spa-win.best{box-shadow:0 0 0 2px var(--brass), 0 12px 30px -22px rgba(0,0,0,.45);}
   .spa-menu{margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px;}
-  .menu-card{background:var(--bone); border-radius:8px; padding:22px 24px; box-shadow:0 18px 42px -26px rgba(0,0,0,.45);}
+  .menu-card{color:var(--ink); background:var(--bone); border-radius:8px; padding:22px 24px; box-shadow:0 18px 42px -26px rgba(0,0,0,.45);}
   .menu-card h3{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:1.4rem; color:var(--pine-dark); margin-bottom:6px;}
   .menu-row{display:grid; grid-template-columns:1fr auto; gap:2px 14px; padding:11px 0; border-bottom:1px dashed var(--line);}
   .menu-row:last-of-type{border-bottom:0;}
@@ -416,9 +455,12 @@
   <div class="links">
     <a href="#package">Package</a>
     <a href="#courses">Courses</a>
-    <a href="#tee-times">Tee Times</a>
+    <a href="#thursday">Thu</a>
+    <a href="#friday">Fri</a>
+    <a href="#saturday">Sat</a>
+    <a href="#sunday">Sun</a>
+    <a href="#monday">Mon</a>
     <a href="#stay">Stay</a>
-    <a href="#dining">Dining</a>
     <a href="#spa">Spa</a>
     <a href="#cost">Cost</a>
     <a href="#dates">Dates</a>
@@ -621,38 +663,215 @@
   </div>
 </section>
 
-<!-- TEE TIMES -->
-<section class="day tone-cream" id="tee-times">
+<!-- THURSDAY -->
+<section class="day tone-cream" id="thursday">
   <div class="wrap reveal">
     <div class="day-head">
       <div>
-        <div class="day-eyebrow">The Tee Sheet</div>
-        <h2>Tee Times</h2>
+        <div class="day-eyebrow">Thursday, Nov 11</div>
+        <h2>Arrival Day</h2>
       </div>
-      <p class="day-blurb">Booked. Three rounds and The Cradle, Friday through Sunday.</p>
+      <p class="day-blurb">Travel in, check in to the Carolina, private dinner at night. No golf today.</p>
     </div>
-    <div class="teesheet">
-      <div class="tee-day"><div class="dow">Thu</div><div class="date">Nov 11</div><div class="sub">Arrival day</div>
-        <div class="slot"><p class="tee-off">No golf. Travel in, check in to the Carolina, private dinner at night.</p></div></div>
-      <div class="tee-day"><div class="dow">Fri</div><div class="date">Nov 12</div><div class="sub">Round 1</div>
-        <div class="course"><img src="img/logo-no10.png" alt="" loading="lazy">No. 10</div>
-        <div class="slot"><div><span>Group 1</span><b>10:36 AM</b></div><div><span>Group 2</span><b>10:48 AM</b></div><div><span>Group 3</span><b>11:00 AM</b></div></div>
-        <span class="tee-tag">Same caddies requested</span></div>
-      <div class="tee-day"><div class="dow">Sat</div><div class="date">Nov 13</div><div class="sub">Round 2</div>
-        <div class="course"><img src="img/logo-putterboy.png" alt="" loading="lazy">No. 5</div>
-        <div class="slot"><div><span>Group 1</span><b>10:32 AM</b></div><div><span>Group 2</span><b>10:40 AM</b></div><div><span>Group 3</span><b>10:48 AM</b></div></div></div>
-      <div class="tee-day"><div class="dow">Sun</div><div class="date">Nov 14</div><div class="sub">Round 3 + The Cradle</div>
-        <div class="course"><img src="img/logo-cradle.png" alt="" loading="lazy">The Cradle</div>
-        <div class="slot"><div><span>Group 1</span><b>9:45 AM</b></div><div><span>Group 2</span><b>9:55 AM</b></div></div>
-        <span class="then">then</span>
-        <div class="course"><img src="img/logo-no2.png" alt="" loading="lazy">No. 2</div>
-        <div class="slot"><div><span>Group 1</span><b>11:50 AM</b></div><div><span>Group 2</span><b>12:00 PM</b></div><div><span>Group 3</span><b>12:10 PM</b></div></div>
-        <span class="tee-tag">Same caddies requested</span></div>
-      <div class="tee-day"><div class="dow">Mon</div><div class="date">Nov 15</div><div class="sub">Departure day</div>
-        <div class="slot"><p class="tee-off">No golf. Breakfast, check out and head home.</p></div></div>
+    <div class="sched">
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#129523;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Arrival &middot; Check in</div>
+          <div class="stitle">The Carolina Hotel</div>
+          <div class="sdetail">Get in, drop bags and settle in. Four nights start here. Club storage covers the whole trip, so the sticks are handled.</div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127860;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Dinner &middot; Private &middot; Details TBD</div>
+          <div class="stitle">Private Dinner</div>
+          <div class="sdetail">A private dinner for the group to kick it off. Where and when are still to come.</div>
+        </div>
+      </div>
     </div>
-    <p class="tee-foot"><b>Caddies:</b> we&rsquo;ve asked for the same caddies on Friday (No. 10) and Sunday (No. 2). Pairings to come.</p>
-    <div class="to-book"><span class="lbl">On the sheet</span><span class="chip"><img src="img/logo-no10.png" alt="" loading="lazy">No. 10</span><span class="chip"><img src="img/logo-putterboy.png" alt="" loading="lazy">No. 5</span><span class="chip"><img src="img/logo-cradle.png" alt="" loading="lazy">The Cradle</span><span class="chip"><img src="img/logo-no2.png" alt="" loading="lazy">No. 2</span></div>
+  </div>
+</section>
+
+<!-- FRIDAY -->
+<section class="day tone-pine" id="friday">
+  <div class="wrap reveal">
+    <div class="day-head">
+      <div>
+        <div class="day-eyebrow">Friday, Nov 12</div>
+        <h2>No. 10</h2>
+      </div>
+      <p class="day-blurb">Breakfast at the Carolina, Doak&rsquo;s No. 10 out at the Sandmines, lunch at Station 21, dinner at Wiregrass.</p>
+    </div>
+    <div class="sched">
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9749;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Breakfast &middot; Every morning</div>
+          <div class="stitle">Carolina Breakfast Buffet</div>
+          <div class="sdetail">The Southern breakfast buffet in our hotel. Eat, then catch the shuttle out to the Sandmines.</div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9971;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Golf &middot; Morning &middot; Confirmed</div>
+          <div class="stitle"><img src="img/logo-no10.png" alt="">No. 10</div>
+          <div class="sdetail">Tom Doak&rsquo;s sand-mine course, about five miles south of the village. We&rsquo;ve asked for the same caddies here and on Sunday&rsquo;s No. 2.</div>
+          <div class="tees"><div class="tee-tk"><span class="cad">Same caddies</span><div class="ctag"><img src="img/logo-no10.png" alt="">No. 10</div><div class="tt">10:36 AM</div><div class="perf"></div><div class="grp"><span class="n">01</span>Group 1 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><span class="cad">Same caddies</span><div class="ctag"><img src="img/logo-no10.png" alt="">No. 10</div><div class="tt">10:48 AM</div><div class="perf"></div><div class="grp"><span class="n">02</span>Group 2 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><span class="cad">Same caddies</span><div class="ctag"><img src="img/logo-no10.png" alt="">No. 10</div><div class="tt">11:00 AM</div><div class="perf"></div><div class="grp"><span class="n">03</span>Group 3 <em>&middot; pairings to come</em></div></div></div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127828;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Lunch &middot; First come, first served</div>
+          <div class="stitle">Station 21</div>
+          <div class="sdetail">The Southwestern grill right by No. 10&rsquo;s first tee: brisket tacos, carne asada and a patio over the course.</div>
+          <a class="text-link" href="https://www.pinehurst.com/dining/station-21/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127860;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Dinner &middot; Reserved</div>
+          <div class="stitle">Wiregrass</div>
+          <div class="sdetail">Farm-to-table in the Main Clubhouse, with a seasonal menu built around local farms. The bar opens at 4.</div>
+          <a class="text-link" href="https://www.pinehurst.com/dining/wiregrass/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SATURDAY -->
+<section class="day tone-sand" id="saturday">
+  <div class="wrap reveal">
+    <div class="day-head">
+      <div>
+        <div class="day-eyebrow">Saturday, Nov 13</div>
+        <h2>No. 5</h2>
+      </div>
+      <p class="day-blurb">Old-school No. 5 in the morning, lunch at The Deuce on No. 2&rsquo;s 18th green, dinner at the Carolina Dining Room.</p>
+    </div>
+    <div class="sched">
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9749;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Breakfast &middot; Every morning</div>
+          <div class="stitle">Carolina Breakfast Buffet</div>
+          <div class="sdetail">The Southern breakfast buffet in our hotel. Then the shuttle to the Main Clubhouse.</div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9971;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Golf &middot; Morning &middot; Confirmed</div>
+          <div class="stitle"><img src="img/logo-putterboy.png" alt="">No. 5</div>
+          <div class="sdetail">Ellis Maples&rsquo; parkland course: tall pines, more water than anywhere else at Pinehurst, and the Cathedral Hole on 14.</div>
+          <div class="tees"><div class="tee-tk"><div class="ctag"><img src="img/logo-putterboy.png" alt="">No. 5</div><div class="tt">10:32 AM</div><div class="perf"></div><div class="grp"><span class="n">01</span>Group 1 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><div class="ctag"><img src="img/logo-putterboy.png" alt="">No. 5</div><div class="tt">10:40 AM</div><div class="perf"></div><div class="grp"><span class="n">02</span>Group 2 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><div class="ctag"><img src="img/logo-putterboy.png" alt="">No. 5</div><div class="tt">10:48 AM</div><div class="perf"></div><div class="grp"><span class="n">03</span>Group 3 <em>&middot; pairings to come</em></div></div></div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127828;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Lunch &middot; First come, first served</div>
+          <div class="stitle">The Deuce</div>
+          <div class="sdetail">Right on the 18th green of No. 2. Pub food, craft cocktails and NC beers, inside or out.</div>
+          <a class="text-link" href="https://www.pinehurst.com/dining/the-deuce/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127860;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Dinner &middot; Reserved</div>
+          <div class="stitle">Carolina Dining Room</div>
+          <div class="sdetail">The hotel&rsquo;s signature restaurant, with French cooking alongside American classics. It&rsquo;s in our building, so the walk home is short.</div>
+          <a class="text-link" href="https://www.pinehurst.com/dining/carolina-dining-room/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUNDAY -->
+<section class="day tone-navy" id="sunday">
+  <div class="wrap reveal">
+    <div class="day-head">
+      <div>
+        <div class="day-eyebrow">Sunday, Nov 14</div>
+        <h2>The Cradle &amp; No. 2</h2>
+      </div>
+      <p class="day-blurb">The big one. The Cradle to warm up, straight over to No. 2, then dinner at Carolina Vista.</p>
+    </div>
+    <div class="sched">
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9749;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Breakfast &middot; Every morning</div>
+          <div class="stitle">Carolina Breakfast Buffet</div>
+          <div class="sdetail">The Southern breakfast buffet in our hotel. Eat early. We&rsquo;re on The Cradle at 9:45.</div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9971;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Golf &middot; Warm-up &middot; Confirmed</div>
+          <div class="stitle"><img src="img/logo-cradle.png" alt="">The Cradle</div>
+          <div class="sdetail">Nine par 3s, music on, closest to the pin on every hole. About an hour, then we walk to No. 2.</div>
+          <div class="tees"><div class="tee-tk"><div class="ctag"><img src="img/logo-cradle.png" alt="">The Cradle</div><div class="tt">9:45 AM</div><div class="perf"></div><div class="grp"><span class="n">01</span>Group 1 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><div class="ctag"><img src="img/logo-cradle.png" alt="">The Cradle</div><div class="tt">9:55 AM</div><div class="perf"></div><div class="grp"><span class="n">02</span>Group 2 <em>&middot; pairings to come</em></div></div></div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9971;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Golf &middot; Midday &middot; Confirmed</div>
+          <div class="stitle"><img src="img/logo-no2.png" alt="">No. 2</div>
+          <div class="sdetail">Four U.S. Opens, turtleback greens and no rough. Same caddies as Friday, requested.</div>
+          <div class="tees"><div class="tee-tk"><span class="cad">Same caddies</span><div class="ctag"><img src="img/logo-no2.png" alt="">No. 2</div><div class="tt">11:50 AM</div><div class="perf"></div><div class="grp"><span class="n">01</span>Group 1 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><span class="cad">Same caddies</span><div class="ctag"><img src="img/logo-no2.png" alt="">No. 2</div><div class="tt">12:00 PM</div><div class="perf"></div><div class="grp"><span class="n">02</span>Group 2 <em>&middot; pairings to come</em></div></div><div class="tee-tk"><span class="cad">Same caddies</span><div class="ctag"><img src="img/logo-no2.png" alt="">No. 2</div><div class="tt">12:10 PM</div><div class="perf"></div><div class="grp"><span class="n">03</span>Group 3 <em>&middot; pairings to come</em></div></div></div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127860;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Dinner &middot; Reserved</div>
+          <div class="stitle">Carolina Vista</div>
+          <div class="sdetail">Inside the Carolina. A low-key last night after the biggest golf day of the trip.</div>
+          <a class="text-link" href="https://www.pinehurst.com/dining/carolina-vista-lounge/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONDAY -->
+<section class="day tone-cream" id="monday">
+  <div class="wrap reveal">
+    <div class="day-head">
+      <div>
+        <div class="day-eyebrow">Monday, Nov 15</div>
+        <h2>Departure Day</h2>
+      </div>
+      <p class="day-blurb">One more breakfast, check out, head home.</p>
+    </div>
+    <div class="sched">
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#9749;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Breakfast &middot; Every morning</div>
+          <div class="stitle">Carolina Breakfast Buffet</div>
+          <div class="sdetail">The Southern breakfast buffet in our hotel. One last one before the road.</div>
+        </div>
+      </div>
+      <div class="sstop">
+        <div class="srail"><div class="sdot">&#127968;</div><div class="sline"></div></div>
+        <div>
+          <div class="slabel">Departure</div>
+          <div class="stitle">Check Out &amp; Head Home</div>
+          <div class="sdetail">Check out of the Carolina and travel home.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -721,62 +940,8 @@
   </div>
 </section>
 
-<!-- DINING -->
-<section class="day tone-pine" id="dining">
-  <div class="wrap">
-    <div class="day-head reveal">
-      <div>
-        <div class="day-eyebrow">Where We&rsquo;re Eating</div>
-        <h2>Dining</h2>
-      </div>
-      <p class="day-blurb">Breakfast at the Carolina every morning, lunch near the course, and a big dinner every night.</p>
-    </div>
-    <div class="dine-alert reveal">Reservations already made at the 3 amazing places: Wiregrass on Friday, the Carolina Dining Room on Saturday and Carolina Vista on Sunday. Thursday is a private dinner, with details to come.</div>
-    <div class="meal-plan reveal"><div class="meal-day"><div class="dow">Thu &middot; Nov 11</div><div class="meal"><span>Dinner</span><b>Private dinner</b><br><em>Details TBD</em></div></div><div class="meal-day"><div class="dow">Fri &middot; Nov 12</div><div class="meal"><span>Breakfast</span><b>Carolina buffet</b></div><div class="meal"><span>Lunch</span><b>Station 21</b><br><em>First come, first served</em></div><div class="meal"><span>Dinner</span><b>Wiregrass</b><br><em>Reserved</em></div></div><div class="meal-day"><div class="dow">Sat &middot; Nov 13</div><div class="meal"><span>Breakfast</span><b>Carolina buffet</b></div><div class="meal"><span>Lunch</span><b>The Deuce</b><br><em>First come, first served</em></div><div class="meal"><span>Dinner</span><b>Carolina Dining Room</b><br><em>Reserved</em></div></div><div class="meal-day"><div class="dow">Sun &middot; Nov 14</div><div class="meal"><span>Breakfast</span><b>Carolina buffet</b></div><div class="meal"><span>Dinner</span><b>Carolina Vista</b><br><em>Reserved</em></div></div><div class="meal-day"><div class="dow">Mon &middot; Nov 15</div><div class="meal"><span>Breakfast</span><b>Carolina buffet</b></div></div></div>
-    <div class="dine-group reveal"><h3>Dinner</h3><div class="dine-grid">
-        <div class="dine"><div class="dine-photo"><img src="img/dine-wiregrass.jpg" alt="Wiregrass" loading="lazy"><span class="dine-flag res">Fri dinner &middot; Reserved</span></div>
-          <div class="dine-body"><div class="where">Main Clubhouse &middot; Farm to table</div><h4>Wiregrass</h4><p>A seasonal menu built around local farms, right after our No. 10 round. The bar opens at 4 if anyone gets there early.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/wiregrass/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-        <div class="dine"><div class="dine-photo"><img src="img/dine-carolina-dining-room.jpg" alt="Carolina Dining Room" loading="lazy"><span class="dine-flag res">Sat dinner &middot; Reserved</span></div>
-          <div class="dine-body"><div class="where">Carolina Hotel &middot; French-American</div><h4>Carolina Dining Room</h4><p>The hotel&rsquo;s signature restaurant, with French cooking alongside American classics. It&rsquo;s in our building, so the walk home is short.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/carolina-dining-room/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-        <div class="dine"><div class="dine-photo"><img src="img/dine-carolina-vista.jpg" alt="Carolina Vista" loading="lazy"><span class="dine-flag res">Sun dinner &middot; Reserved</span></div>
-          <div class="dine-body"><div class="where">Carolina Hotel</div><h4>Carolina Vista</h4><p>The newly renovated spot inside the Carolina. A low-key last night after the big Sunday of The Cradle and No. 2.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/carolina-vista-lounge/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-    </div></div>
-    <div class="dine-group reveal"><h3>Lunch</h3><div class="dine-grid">
-        <div class="dine"><div class="dine-photo"><img src="img/dine-station-21.jpg" alt="Station 21" loading="lazy"><span class="dine-flag">Fri lunch</span></div>
-          <div class="dine-body"><div class="where">Pinehurst Sandmines &middot; Southwestern</div><h4>Station 21</h4><p>A Southwestern grill at No. 10, with brisket tacos, carne asada and a patio over the first tee. First come, first served.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/station-21/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-        <div class="dine"><div class="dine-photo"><img src="img/dine-the-deuce.jpg" alt="The Deuce" loading="lazy"><span class="dine-flag">Sat lunch</span></div>
-          <div class="dine-body"><div class="where">Main Clubhouse &middot; Pub</div><h4>The Deuce</h4><p>Sits right on the 18th green of No. 2, with indoor and outdoor seats. Pub food, craft cocktails and NC beers. First come, first served.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/the-deuce/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-    </div></div>
-    <div class="dine-group reveal"><h3>Breakfast</h3><div class="dine-grid">
-        <div class="dine"><div class="dine-photo"><img src="img/carolina-lobby.jpg" alt="The Carolina Hotel" loading="lazy"><span class="dine-flag">Every morning</span></div>
-          <div class="dine-body"><div class="where">Carolina Hotel</div><h4>Carolina Breakfast Buffet</h4><p>The Southern breakfast buffet in our hotel, every morning of the trip. Roll downstairs, eat, catch the shuttle to the first tee.</p>
-          <a class="text-link" href="https://www.pinehurst.com/accommodations/the-carolina-hotel/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-        <div class="dine"><div class="dine-photo"><img src="img/dine-coffee-house.jpg" alt="The Coffee House" loading="lazy"></div>
-          <div class="dine-body"><div class="where">Carolina Hotel lobby</div><h4>The Coffee House</h4><p>Coffee, breakfast sandwiches and pastries steps from our rooms, if you need something before the buffet opens.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/the-carolina-coffee-shop/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-    </div></div>
-    <div class="dine-group reveal"><h3>Drinks &amp; off the plan</h3><div class="dine-grid">
-        <div class="dine"><div class="dine-photo"><img src="img/dine-north-south-bar.jpg" alt="North &amp; South Bar" loading="lazy"></div>
-          <div class="dine-body"><div class="where">The Manor</div><h4>North &amp; South Bar</h4><p>Old-school golf bar with about 150 bourbons, whiskeys, ryes and Scotches, including Pinehurst Reserve, which Woodford blends for the resort.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/north-south-bar/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-        <div class="dine"><div class="dine-photo"><img src="img/dine-the-tavern.jpg" alt="The Tavern" loading="lazy"></div>
-          <div class="dine-body"><div class="where">In the Village &middot; Pub</div><h4>The Tavern</h4><p>An antique bar shipped over from Scotland, homemade chips, and a string-lit patio.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/the-tavern/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-        <div class="dine"><div class="dine-photo"><img src="img/dine-pinehurst-brewing.jpg" alt="Pinehurst Brewing Co." loading="lazy"></div>
-          <div class="dine-body"><div class="where">In the Village &middot; Brewery</div><h4>Pinehurst Brewing Co.</h4><p>House-brewed beer and barbecue, with a beer garden that stays open until 10.</p>
-          <a class="text-link" href="https://www.pinehurst.com/dining/pinehurst-brewing-company/" target="_blank" rel="noopener">Menu &amp; hours &rarr;</a></div></div>
-    </div></div>
-    <p class="credit">Photos: Pinehurst Resort</p>
-  </div>
-</section>
-
 <!-- SPA -->
-<section class="day tone-sand" id="spa">
+<section class="day tone-pine" id="spa">
   <div class="wrap reveal">
     <div class="day-head">
       <div>
@@ -861,10 +1026,7 @@
       <div class="stop"><div class="when">At booking</div><div class="what"><h4>Lock it in</h4><p>$300 per person. That&rsquo;s all that&rsquo;s due right now.</p></div></div>
       <div class="stop"><div class="when">Oct 12, 2027</div><div class="what"><h4>Last day to back out</h4><p>Deposits are refundable up to 30 days before arrival.</p></div></div>
       <div class="stop"><div class="when">Nov 4, 2027</div><div class="what"><h4>Extra rounds open</h4><p>Additional rounds on Nos. 2, 4, 6, 7, 8, 9, 10 &amp; 11 can be booked 7 days out, based on availability.</p></div></div>
-      <div class="stop"><div class="when">Thu, Nov 11</div><div class="what"><h4>Arrive</h4><p>Check in to the Carolina. Private dinner at night.</p></div></div>
-      <div class="stop"><div class="when">Fri, Nov 12</div><div class="what"><h4>No. 10</h4><p>Tee times 10:36, 10:48 and 11:00 AM. Dinner at Wiregrass.</p></div></div>
-      <div class="stop"><div class="when">Sat, Nov 13</div><div class="what"><h4>No. 5</h4><p>Tee times 10:32, 10:40 and 10:48 AM. Dinner at the Carolina Dining Room.</p></div></div>
-      <div class="stop"><div class="when">Sun, Nov 14</div><div class="what"><h4>The Cradle, then No. 2</h4><p>The Cradle at 9:45 and 9:55 AM, then No. 2 at 11:50 AM, 12:00 and 12:10 PM. Dinner at Carolina Vista.</div></div>
+      <div class="stop"><div class="when">Thu, Nov 11</div><div class="what"><h4>Arrive</h4><p>Check in to the Carolina. Private dinner at night.</div></div>
       <div class="stop"><div class="when">Mon, Nov 15</div><div class="what"><h4>Head home</h4><p>Check out and travel home.</p></div></div>
     </div>
   </div>
@@ -997,7 +1159,7 @@
   if(!reduce && fine){ var lastT=0; document.addEventListener('mousemove',function(e){ var now=Date.now(); if(now-lastT<70) return; lastT=now; var s=document.createElement('div'); s.className='cursor-pine'; s.textContent=Math.random()<.5?'🌲':'✦'; s.style.setProperty('--r',(Math.random()*80-40)+'deg'); s.style.left=e.clientX+'px'; s.style.top=e.clientY+'px'; document.body.appendChild(s); setTimeout(function(){s.remove();},900); }); }
 
   // ===== 7. 3D tilt =====
-  if(!reduce && fine){ document.querySelectorAll('.card, .ticket, .tee-day, .dine, .dossier, .menu-card').forEach(function(c){ var big=c.classList.contains('dossier'), k=big?3:9; c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5; c.style.transition='transform .08s linear'; c.style.transform='perspective(900px) rotateY('+(px*k)+'deg) rotateX('+(-py*k)+'deg) translateY(-5px)'; }); c.addEventListener('mouseleave',function(){ c.style.transition='transform .4s ease'; c.style.transform=''; }); }); }
+  if(!reduce && fine){ document.querySelectorAll('.card, .ticket, .tee-tk, .dossier, .menu-card').forEach(function(c){ var big=c.classList.contains('dossier'), k=big?3:9; c.addEventListener('mousemove',function(e){ var r=c.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5; c.style.transition='transform .08s linear'; c.style.transform='perspective(900px) rotateY('+(px*k)+'deg) rotateX('+(-py*k)+'deg) translateY(-5px)'; }); c.addEventListener('mouseleave',function(){ c.style.transition='transform .4s ease'; c.style.transform=''; }); }); }
 
   // ===== 8. secret "boyz" + Konami party =====
   var buf=''; window.addEventListener('keydown',function(e){ if(!e.key||e.key.length!==1) return; buf=(buf+e.key.toLowerCase()).slice(-6); if(buf.indexOf('boyz')>-1){ buf=''; downpour(40); for(var k=0;k<5;k++){(function(k){setTimeout(function(){confetti(window.innerWidth*(.2+Math.random()*.6), window.innerHeight*.32, 55);},k*220);})(k);} toast("LET'S GO BOYZ 🌲⛳"); } });
@@ -1042,11 +1204,10 @@
 
   // ===== 11. split-flap tee sheet =====
   var CH='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:-';
-  var cells=[].slice.call(document.querySelectorAll('.tee-day .slot b'));
+  var cells=[].slice.call(document.querySelectorAll('.tee-tk .tt'));
   cells.forEach(function(b){ var fin=b.textContent; b.setAttribute('aria-label',fin); b.innerHTML='<span class="flapline" aria-hidden="true">'+fin.split('').map(function(c){ return '<span class="flap'+(c===' '?' sp':'')+'" data-f="'+c.replace(/"/g,'&quot;')+'">'+(c===' '?'&nbsp;':c)+'</span>'; }).join('')+'</span>'; });
-  function flipAll(){ if(reduce) return; cells.forEach(function(b,ci){ [].slice.call(b.querySelectorAll('.flap:not(.sp)')).forEach(function(f,fi){ var fin=f.getAttribute('data-f'), n=6+fi*2+ci, k=0; (function step(){ f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); if(k<n){ f.textContent=CH[Math.floor(Math.random()*CH.length)]; k++; setTimeout(step,70); } else { f.textContent=fin; } })(); }); }); }
-  onEnter(document.querySelector('.teesheet'),flipAll,0.8);
-  document.querySelectorAll('.tee-day').forEach(function(td){ td.addEventListener('click',flipAll); });
+  function flipAll(list){ if(reduce) return; (list||cells).forEach(function(b,ci){ [].slice.call(b.querySelectorAll('.flap:not(.sp)')).forEach(function(f,fi){ var fin=f.getAttribute('data-f'), n=6+fi*2+ci, k=0; (function step(){ f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); if(k<n){ f.textContent=CH[Math.floor(Math.random()*CH.length)]; k++; setTimeout(step,70); } else { f.textContent=fin; } })(); }); }); }
+  document.querySelectorAll('.tees').forEach(function(g){ var mine=[].slice.call(g.querySelectorAll('.tt')); onEnter(g,function(){ flipAll(mine); },0.85); g.addEventListener('click',function(){ flipAll(mine); }); });
 
   // ===== 14. hero light follows the viewer's time of day =====
   var hero=document.getElementById('hero');
